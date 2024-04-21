@@ -10,12 +10,10 @@ const Router = createBrowserRouter([
 	{
 		path: ROUTES.CATALOG,
 		element: <Catalog />,
-		children: [
-			{
-				path: ROUTES.PRODUCT,
-				element: <ProductDetailed />
-			}
-		]
+	},
+	{
+		path: ROUTES.PRODUCT(),
+		element: <ProductDetailed />
 	},
 	{
 		path: ROUTES.NOTFOUND,

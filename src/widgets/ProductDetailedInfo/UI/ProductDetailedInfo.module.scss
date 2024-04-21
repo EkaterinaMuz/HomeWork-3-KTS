@@ -1,0 +1,72 @@
+@use '@shared/styles/globals.scss' as *;
+
+.card_wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+	justify-content: space-between;
+	margin-bottom: 48px;
+	align-items: flex-start;
+	gap: 48px;
+}
+.card_gallery {
+	max-width: 600px;
+	height: 600px;
+	object-fit: cover;
+}
+.card_gallery img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.product_description {
+	margin-bottom: 80px;
+}
+.title {
+	margin-bottom: 24px;
+	@include h1;
+	text-align: left;
+}
+
+.subtitle {
+	@include secondary-text;
+	text-align: left;
+}
+.price {
+	margin-bottom: 48px;
+	@include h1;
+	text-align: left;
+}
+
+.buttons_wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 48px;
+}
+
+@media (max-width: 768px) {
+	.card_gallery {
+		max-height: 350px;
+	}
+	.title {
+		@include mobile-title;
+		text-align: left;
+	}
+	
+	.subtitle {
+		@include mobile-subtitle;
+		text-align: left;
+	}
+}
+@media (max-width: 420px) {
+
+	.card_wrapper {
+		grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	}
+	.product_description {
+		margin-bottom: 40px;
+	}
+	.buttons_wrapper {
+		gap: 25px;
+	}
+}

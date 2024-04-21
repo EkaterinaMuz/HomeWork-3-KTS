@@ -12,7 +12,8 @@
       "@pages": ["pages/*"],
       "@widgets/*": ["widgets/*"],
       "@features/*": ["features/*"],
-      "@shared/*": ["shared/*"]
+      "@shared/*": ["shared/*"],
+      "@globals": ["shared/styles/globals.scss"]
     },
 
     "moduleResolution": "bundler",
@@ -27,6 +28,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "main.tsx"],
+  "types": ["vite-plugin-svgr/client"],
+  "include": ["src", "main.tsx", "custom.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
+
 }

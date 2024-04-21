@@ -1,0 +1,42 @@
+@use '@shared/styles/globals.scss' as *;
+
+.btn {
+	min-width: 137px;
+	gap: 0 12px;
+	padding: 14px 20px;
+	background-color: var(--button-primary-bg);
+	color: $light;
+	font-size: 18px;
+	text-align: center;
+	border: none;
+	outline: none;
+	cursor: pointer;
+}
+.btn svg path {
+	fill: #FFF;
+}
+.btn:hover:enabled {
+	background-color: var(--button-primary-bg-hover);
+	color: var(--button-primary-text-hover);
+}
+.disabled {
+	background-color: var(--button-primary-bg-disabled);
+	color: var(--button-primary-text-disabled);
+}
+.btn:active {
+	background-color: var(--button-primary-bg-active);
+	color: var(--button-primary-text-active);
+}
+.accent {
+	background-color: $accent;
+}
+.light {
+	border: 1px solid $primary;
+	background-color: $light;
+	color: $primary;
+}
+.light:hover:enabled {
+	border: 1px solid $accent;
+	background-color: $light;
+	color: $accent;
+}

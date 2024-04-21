@@ -1,6 +1,7 @@
 import path from 'path';
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import svgr from 'vite-plugin-svgr'
 import tsconfig from './tsconfig.json';
 
 const SRC_PATH = path.resolve(__dirname, 'src');
@@ -13,13 +14,12 @@ const parseTsConfigPaths = (paths: Record<string, string[]>): Record<string, str
 
     webpackConfigAliases[newAlias] = path.join(SRC_PATH, aliasPath);
   });
-  console.log(webpackConfigAliases)
   return webpackConfigAliases;
 };
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), svgr()],
   resolve: {
     alias: parseTsConfigPaths(tsconfig.compilerOptions.paths),
   },

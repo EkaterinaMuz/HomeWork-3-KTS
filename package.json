@@ -11,10 +11,15 @@
     "lint:fix": "eslint \"./src/**/*.{js,jsx,ts,tsx}\" --fix"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^1.6.8",
+    "classnames": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.4.0",
     "react-router-dom": "^6.22.3",
-    "sass": "^1.75.0"
+    "sass": "^1.75.0",
+    "vite-plugin-svgr": "^4.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.12.7",

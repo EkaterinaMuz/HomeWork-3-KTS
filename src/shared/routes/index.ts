@@ -1,6 +1,6 @@
 const ROUTES = {
 	CATALOG: '/',
-	PRODUCT: 'product/:id',
+	PRODUCT: (id: string = ':id') => `/products/${id}`,
 	NOTFOUND: '*',
 }
 

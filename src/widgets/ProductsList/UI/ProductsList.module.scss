@@ -1,0 +1,33 @@
+@use '@shared/styles/globals.scss' as *;
+
+.quantity_wrapper {
+	margin-bottom: 32px;
+	display: flex;
+	align-items: center;
+	gap: 24px;
+}
+
+.quatity_text {
+	@include h2;
+}
+.quatity_number {
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 120%;
+	color: $accent;
+}
+
+.catalog_wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(360px, auto));
+	justify-content: space-between;
+	margin-bottom: 48px;
+	row-gap: 30px;
+	column-gap: 20px;
+}
+
+@media (max-width: 1180px) {
+	.catalog_wrapper {
+		justify-content: center;
+	}
+}
