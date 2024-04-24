@@ -1,0 +1,44 @@
+@use '@shared/styles/globals.scss' as *;
+
+.pagination_wrapper {
+	padding: 0 15px;
+	margin-bottom: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.pagination_pages {
+	padding: 0 15px;
+}
+
+.page {
+	padding: 10px;
+	width: 38px;
+	height: 42px;
+	font-family: var(--font-family);
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 130%;
+	text-align: center;
+	color: #151411;
+	cursor: pointer;
+}
+
+.active {
+	background-color: $accent;
+	color: $light;
+}
+
+.nav_right {
+	transform: rotate(180deg);
+}
+
+.nav.disabled svg path {
+	stroke: $secondary
+}
+
+@media (max-width: 420px) {
+	.pagination_wrapper {
+		display: none;
+	}
+}

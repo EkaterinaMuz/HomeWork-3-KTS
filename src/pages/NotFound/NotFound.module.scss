@@ -1,0 +1,9 @@
+@use '@shared/styles/globals.scss' as *;
+
+.title {
+	height: 300px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	@include h1;
+}

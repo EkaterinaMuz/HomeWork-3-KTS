@@ -1,0 +1,21 @@
+@use '@shared/styles/globals.scss' as *;
+
+.title {
+	margin-bottom: 32px;
+	@include h2;
+}
+
+.related_wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(360px, auto));
+	justify-content: space-between;
+	margin-bottom: 48px;
+	row-gap: 30px;
+	column-gap: 20px;
+}
+
+@media (max-width: 1180px) {
+	.related_wrapper {
+		justify-content: center;
+	}
+}
