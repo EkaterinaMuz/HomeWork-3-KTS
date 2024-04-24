@@ -28,12 +28,38 @@ const Card: React.FC<CardProps> = (props) => {
             <img className={s.img} src={props.image} alt="" />
             <div className={s.info}>
                 <div className={s.text}>
-                    {props.captionSlot && <Text className={s.caption} weight='medium' view='p-14'>{props.captionSlot}</Text>}
-                    <Text maxLines={2} className={s.title} weight='bold' view='p-20'>{props.title}</Text>
-                    <Text maxLines={3} className={s.descr} view='p-16'>{props.subtitle}</Text>
+                    {props.captionSlot && (
+                        <Text
+                            className={s.caption}
+                            weight='medium'
+                            view='p-14'
+                            color='secondary'
+                        >
+                            {props.captionSlot}
+                        </Text>
+                    )}
+                    <Text
+                        maxLines={2}
+                        className={s.title}
+                        weight='bold'
+                        view='p-20'
+                        color='primary'
+                    >
+                        {props.title}
+                    </Text>
+                    <Text
+                        maxLines={3}
+                        className={s.descr}
+                        view='p-16'
+                        color='secondary'
+                    >
+                        {props.subtitle}
+                    </Text>
                 </div>
                 <div className={s['card-footer']}>
-                    {props.contentSlot && <Text view='p-18' weight='bold'>${props.contentSlot}</Text>}
+                    {props.contentSlot && (
+                        <Text view='p-18' weight='bold'>${props.contentSlot}</Text>)
+                    }
                     {props.actionSlot}
                 </div>
             </div>

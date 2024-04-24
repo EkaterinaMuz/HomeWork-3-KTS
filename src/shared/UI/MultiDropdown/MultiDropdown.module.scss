@@ -16,7 +16,7 @@
 .item:hover {
 	color: var(--text-secondary);
 }
-.item[selected] {
+.selected {
 	color: var(--loader-bg);
 	background-color: var(--button-primary-text);
 }
