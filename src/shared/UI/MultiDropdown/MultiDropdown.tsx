@@ -1,3 +1,5 @@
+
+import cn from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import Input from '../Input';
 import ArrowDownIcon from '../icons/ArrowDownIcon';
@@ -86,11 +88,19 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
 
   return (
     <div ref={dropdownRef}>
-      <Input className={props.className} placeholder={placeholder} disabled={props.disabled} onClick={() => setShow(true)} value={inputValue} onChange={inputChange} afterSlot={<ArrowDownIcon color="secondary" />} />
+      <Input
+        className={props.className}
+        placeholder={placeholder}
+        disabled={props.disabled}
+        onClick={() => setShow(true)}
+        value={inputValue}
+        onChange={inputChange}
+        afterSlot={<ArrowDownIcon color="secondary" />}
+      />
       {(show && !props.disabled) &&
         <select disabled={props.disabled} size={filteredOptions.length} multiple className={s.select}>
           {filteredOptions.map(elem => {
-            return <option className={s.item} value={elem.value} key={elem.key} onClick={(e) => handleClick(e, elem)}>{elem.value}</option>
+            return <option className={cn(s.item, isActive(elem) && s.selected)} value={elem.value} key={elem.key} onClick={(e) => handleClick(e, elem)}>{elem.value}</option>
 
           })}
         </select >

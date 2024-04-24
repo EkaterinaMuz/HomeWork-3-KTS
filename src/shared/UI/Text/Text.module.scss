@@ -1,42 +1,69 @@
-.btn {
+.view_button {
 	font-family: var(--font-family);
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 100%;
-	color: var(--text-primary);
+	color: var(--button-primary-text);
 }
-.title {
+.view_title {
 	font-family: var(--font-family);
 	font-weight: 700;
 	font-size: 44px;
 	line-height: 109%;
 	color: var(--text-primary);
 }
-.p-20 {
+.view_p-20 {
 	font-family: var(--font-family);
 	font-weight: 400;
 	font-size: 20px;
 	line-height: 120%;
 	color: var(--text-primary);
 }
-.p-18 {
+.view_p-18 {
 	font-family: var(--font-family);
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 122%;
 	color: var(--text-primary);
 }
-.p-16 {
+.view_p-16 {
 	font-family: var(--font-family);
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 125%;
 	color: var(--text-primary);
 }
-.p-14 {
+.view_p-14 {
 	font-family: var(--font-family);
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 129%;
 	color: var(--text-primary);
+}
+
+.text_color_accent {
+	color: var(--color-accent);
+}
+.text_color_secondary {
+	color: var( --text-secondary);
+}
+.text_color_primary {
+	color: var( --text-primary);
+}
+.text_weight_normal {
+	font-weight: 400;
+}
+.text_weight_medium {
+	font-weight: 500;
+}
+.text_weight_bold {
+	font-weight: 700;
+}
+
+.text_clamp {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+    width: 100%;
+    overflow: hidden;
+	text-align: left;
 }

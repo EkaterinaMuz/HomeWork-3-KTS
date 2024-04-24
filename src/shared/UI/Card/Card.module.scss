@@ -20,15 +20,6 @@
 .caption,
 .descr {
 	text-align: left;
-	color: var(--text-secondary);
-}
-.title,
-.descr {
-	display: -webkit-box;
-	-webkit-box-orient: vertical;
-    width: 100%;
-    overflow: hidden;
-	text-align: left;
 }
 .img {
 	display: block;

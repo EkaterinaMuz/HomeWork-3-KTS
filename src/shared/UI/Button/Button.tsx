@@ -1,6 +1,7 @@
 import cn from 'classnames';
-import React from 'react';
+import * as React from 'react';
 import Loader from '../Loader';
+import Text from '../Text';
 import s from './Button.module.scss';
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -8,24 +9,22 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
   /** Текст кнопки */
   children: React.ReactNode;
+  disabled?: boolean;
+  color: string;
+  className: string;
+
 };
 
-const Button: React.FC<ButtonProps> = ({ loading, disabled, children, className, ...props }) => {
-  const colors = {
-    accent: props.color === 'accent',
-    light: props.color === 'light'
-  }
+const Button: React.FC<ButtonProps> = ({ loading, disabled, children, className, color, ...props }) => {
   return (
     <>
-      <button data-testid="button" className={cn(className, s.btn, {
+      <button data-testid="button" className={cn(className, s.btn, s[`color_${color}`], {
         [s.disabled]: disabled,
-        [s.accent]: colors.accent,
-        [s.light]: colors.light,
       })}
         disabled={disabled ? true : loading}
         {...props}>
         {loading && <Loader size='s' data-testid="loader" />}
-        {children}
+        <Text tag='span' view='button'>{children}</Text>
       </button >
     </>
   )

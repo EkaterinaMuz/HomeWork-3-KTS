@@ -6,6 +6,15 @@ import { mockOptions } from '@shared/UI/MultiDropdown/lib/mockOptions';
 import styles from './Search.module.scss';
 
 const Search = () => {
+	const getTitle = (options: Option[]) => {
+		if (options.length) {
+			const result = options.reduce((acc, option) => {
+				acc.push(option.value);
+				return acc;
+			}, [] as string[]);
+			return result.join(', ');
+		} else return 'Filter';
+	};
 	return (
 		<div className={styles.searchbar_wrapper}>
 			<div className={styles.search_wrapper}>
@@ -13,7 +22,7 @@ const Search = () => {
 				<Button>Find now</Button>
 			</div>
 			<div className={styles.dropdown_wrapper}>
-				<MultiDropdown options={mockOptions} value={[]} getTitle={(values: Option[]) => `Выбрано: ${values.length}`} onChange={(option: Option[]) => console.log(option)} />
+				<MultiDropdown options={mockOptions} value={[]} getTitle={getTitle} onChange={(option: Option[]) => console.log(option)} />
 			</div>
 		</div>
 	)

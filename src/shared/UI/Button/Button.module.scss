@@ -27,15 +27,15 @@
 	background-color: var(--button-primary-bg-active);
 	color: var(--button-primary-text-active);
 }
-.accent {
+.color_accent {
 	background-color: $accent;
 }
-.light {
+.color_light {
 	border: 1px solid $primary;
 	background-color: $light;
 	color: $primary;
 }
-.light:hover:enabled {
+.color_light:hover:enabled {
 	border: 1px solid $accent;
 	background-color: $light;
 	color: $accent;

@@ -19,18 +19,24 @@ export type TextProps = {
     maxLines?: number;
 };
 
-const Text: React.FC<TextProps> = ({ className, tag, color, weight, view, maxLines, children }) => {
-    const Tag = tag || 'p';
+const Text: React.FC<TextProps> = ({
+    className,
+    tag: Tag = 'p',
+    color,
+    weight = 'normal',
+    view = 'p-14',
+    maxLines,
+    children
+}) => {
     return (
-        <Tag className={cn(className, {
-            [s.btn]: view === 'button',
-            [s.title]: view === 'title',
-            [s['p-20']]: view === 'p-20',
-            [s['p-18']]: view === 'p-18',
-            [s['p-16']]: view === 'p-16',
-            [s['p-14']]: view === 'p-14',
-        })}
-            style={{ color, fontWeight: weight, WebkitLineClamp: maxLines }}>
+        <Tag className={cn(
+            className,
+            s[`view_${view}`],
+            s[`text_color_${color}`],
+            s[`text_weight_${weight}`],
+            { [s.text_clamp]: maxLines }
+        )}
+            style={{ WebkitLineClamp: maxLines }}>
             {children}
         </Tag>
     )
