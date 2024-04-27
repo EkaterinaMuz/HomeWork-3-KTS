@@ -1,35 +1,27 @@
+import { observer, useLocalStore } from 'mobx-react-lite';
 import * as React from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ProductsStore from '@entities/products/models/store';
 import ButtonBack from '@shared/UI/ButtonBack';
-import CatalogService from '@shared/api';
-import { Product } from '@shared/types';
+import { Product } from '@shared/types/Products';
 import Navigation from '@widgets/Navigation/UI';
 import ProductDetailedInfo from '@widgets/ProductDetailedInfo';
 import SkeletonProduct from '@widgets/ProductDetailedInfo/UI/Skeleton';
 import RelatedItems from '@widgets/RelatedItems';
 
 const ProductDetailed = () => {
-	const [product, setProduct] = useState<Product>()
-	const [categoryProducts, setCategoryProducts] = useState<Product[]>([])
+	const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
+
+	const productsStore = useLocalStore(() => new ProductsStore());
 
 	const { id } = useParams();
-
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				if (id) {
-					const result = await CatalogService.getProductById(id);
-					const relatedItems = await CatalogService.getProductsByCategory(result.category.id);
-					setProduct(result);
-					setCategoryProducts(relatedItems);
-				}
-			} catch (error) {
-				console.error('Error fetching products:', error);
-			}
-		};
-
-		fetchData();
+	React.useEffect(() => {
+		if (id) {
+			productsStore.getProductById(id);
+			// const relatedItems = await CatalogService.getProductsByCategory(result.category.id);
+			// setCategoryProducts(relatedItems);
+		}
 	}, [id]);
 
 	return (
@@ -37,11 +29,11 @@ const ProductDetailed = () => {
 			<Navigation />
 			<main className='container'>
 				<ButtonBack />
-				{product ? <ProductDetailedInfo product={product} /> : <SkeletonProduct />}
+				{productsStore.product ? <ProductDetailedInfo product={productsStore.product} /> : <SkeletonProduct />}
 				<RelatedItems products={categoryProducts} />
 			</main>
 		</>
 	)
 }
 
-export default ProductDetailed;
+export default observer(ProductDetailed);

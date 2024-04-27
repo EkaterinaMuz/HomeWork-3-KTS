@@ -10,8 +10,8 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   /** Текст кнопки */
   children: React.ReactNode;
   disabled?: boolean;
-  color: string;
-  className: string;
+  color?: string;
+  className?: string;
 
 };
 

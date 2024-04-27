@@ -17,9 +17,9 @@ export type InputProps = Omit<
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ value, onChange, afterSlot, ...props }, ref) => {
 
-    const [state, setState] = useState<string>(value);
+    const [state, setState] = React.useState<string>(value);
 
-    useEffect(() => {
+    React.useEffect(() => {
       setState(value);
     }, [value]);
 
