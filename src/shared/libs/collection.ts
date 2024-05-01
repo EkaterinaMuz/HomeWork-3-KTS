@@ -3,7 +3,7 @@ export type CollectionModel<K extends string | number, T> = {
   entities: Record<K, T>;
 };
 
-export const getInitialCollectionModel = (): CollectionModel<any, any> => ({
+export const getInitialCollectionModel = (): CollectionModel<string | number, unknown> => ({
   order: [],
   entities: {},
 });

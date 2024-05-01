@@ -6,6 +6,7 @@ export interface ProductApiOptions {
   limit: number;
   offset: number;
   title?: string | string[] | ParsedQs | ParsedQs[];
+  categoryId?: string | string[] | ParsedQs | ParsedQs[];
 }
 
 class ApiService {

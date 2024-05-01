@@ -24,10 +24,8 @@ class QueryParamsStore implements ILocalStore {
   setSearch(searchString: string) {
     if (this._search !== searchString) {
       this._search = searchString;
-      console.log(searchString);
       searchString = searchString.startsWith('?') ? searchString.slice(1) : searchString;
       this._params = qs.parse(searchString);
-      console.log(this._params);
     }
   }
 

@@ -1,20 +1,20 @@
-@use '@shared/styles/globals.scss' as *;
+@use "@shared/styles/globals.scss" as *;
 
 .wrapper {
-	margin: 0 auto;
-	padding: 100px 0 48px;
+  margin: 0 auto;
+  padding: 100px 0 48px;
 }
 .info {
-	margin: 0 auto;
-	max-width: 653px;
+  margin: 0 auto;
+  max-width: 653px;
 }
 .title {
-	margin-bottom: 24px;
-	@include h1;
-	text-align: center;
+  margin-bottom: 24px;
+  @include h1;
+  text-align: center;
 }
 .subtitle {
-	margin: 0 auto;
-	@include secondary-text;
-	text-align: center;
+  margin: 0 auto;
+  @include secondary-text;
+  text-align: center;
 }

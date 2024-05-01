@@ -1,6 +1,6 @@
 
 import cn from 'classnames';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Input from '../Input';
 import ArrowDownIcon from '../icons/ArrowDownIcon';
 import s from './MultiDropdown.module.scss';
@@ -28,23 +28,23 @@ export type MultiDropdownProps = {
 };
 
 const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange, getTitle, ...props }) => {
-  const [inputValue, setinputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>('');
   const [placeholder, setPlaceholder] = useState<string>('');
   const [show, setShow] = useState<boolean>(false);
   const [filteredOptions, setFilteredOptions] = useState<Option[]>(options);
 
-  function setTitle() {
+  const setTitle = useCallback(() => {
     const res = getTitle(value);
     if (value.length === 0) {
       setPlaceholder(res);
     } else {
-      setinputValue(res);
+      setInputValue(res);
     }
-  }
+  }, [value, getTitle, setPlaceholder, setInputValue]);
 
   useEffect(() => {
     setTitle();
-  }, []);
+  }, [setTitle]);
 
   const activeKeys = value.map(({ key }) => key);
 
@@ -63,12 +63,14 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
     let activeOptions: Option[];
     if (isActive(option)) {
       activeOptions = value.filter(el => el.key !== option.key);
+      setPlaceholder('Filter');
     } else {
-      activeOptions = [...value, option];
+      activeOptions = [option];
     }
-    onChange(activeOptions);
     const res = getTitle(activeOptions);
-    setinputValue(res);
+    setInputValue(res);
+    onChange(activeOptions);
+    setShow(false);
   }
 
   const dropdownRef = useRef<null | HTMLDivElement>(null);
@@ -87,7 +89,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
   }, []);
 
   return (
-    <div ref={dropdownRef}>
+    <div ref={dropdownRef} className={s.filter_wrapper}>
       <Input
         className={props.className}
         placeholder={placeholder}
@@ -100,7 +102,16 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
       {(show && !props.disabled) &&
         <select disabled={props.disabled} size={filteredOptions.length} multiple className={s.select}>
           {filteredOptions.map(elem => {
-            return <option className={cn(s.item, isActive(elem) && s.selected)} value={elem.value} key={elem.key} onClick={(e) => handleClick(e, elem)}>{elem.value}</option>
+            return (
+              <option
+                className={cn(s.item, isActive(elem) && s.selected)}
+                value={elem.value}
+                key={elem.key}
+                onClick={(e) => handleClick(e, elem)}
+              >
+                {elem.value}
+              </option>
+            )
 
           })}
         </select >
@@ -108,7 +119,5 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
     </div>
   )
 };
-
-// yarn test:single MultiDropdown
 
 export default MultiDropdown;
