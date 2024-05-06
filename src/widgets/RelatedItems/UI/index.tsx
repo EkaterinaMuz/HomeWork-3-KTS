@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Button from '@shared/UI/Button';
 import Card from '@shared/UI/Card';
@@ -7,36 +7,33 @@ import ROUTES from '@shared/routes';
 import { Product } from '@shared/types/Products';
 import styles from './RelatedItems.module.scss';
 
-
 const RelatedItems: React.FC<{ products: Product[] }> = ({ products }) => {
-	const navigate = useNavigate();
-	return (
-		<section>
-			<h2 className={styles.title}>Related Items</h2>
-			<div className={styles.related_wrapper}>
-				{
-					!products.length && Array(3).fill(0).map((_, index) => <SkeletonCard key={index} />)
-				}
-				{
-					products.map((product) => {
-						return (
-							<Card
-								title={product.title}
-								subtitle={product.description}
-								key={product.id}
-								image={product.images[0]}
-								captionSlot={product.category.name}
-								contentSlot={product.price}
-								actionSlot={<Button>Add to Cart</Button>}
-								onClick={() => navigate(ROUTES.PRODUCT(String(product.id)))}
-							/>
-						)
-
-					})
-				}
-			</div>
-		</section>
-	)
-}
+  const navigate = useNavigate();
+  return (
+    <section>
+      <h2 className={styles.title}>Related Items</h2>
+      <div className={styles.related_wrapper}>
+        {!products.length &&
+          Array(3)
+            .fill(0)
+            .map((_, index) => <SkeletonCard key={index} />)}
+        {products.map((product) => {
+          return (
+            <Card
+              title={product.title}
+              subtitle={product.description}
+              key={product.id}
+              image={product.images[0]}
+              captionSlot={product.category.name}
+              contentSlot={product.price}
+              actionSlot={<Button>Add to Cart</Button>}
+              onClick={() => navigate(ROUTES.PRODUCT(String(product.id)))}
+            />
+          );
+        })}
+      </div>
+    </section>
+  );
+};
 
 export default RelatedItems;

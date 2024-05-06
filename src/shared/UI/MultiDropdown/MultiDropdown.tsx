@@ -1,4 +1,3 @@
-
 import cn from 'classnames';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Input from '../Input';
@@ -48,21 +47,23 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
 
   const activeKeys = value.map(({ key }) => key);
 
-  const isActive = (option: Option) => { return activeKeys.includes(option.key); }
+  const isActive = (option: Option) => {
+    return activeKeys.includes(option.key);
+  };
 
   useEffect(() => {
     setFilteredOptions(options);
   }, [options]);
 
   const inputChange = (string: string) => {
-    setFilteredOptions(options.filter(option => option.value.toLowerCase().includes(string.toLowerCase())));
+    setFilteredOptions(options.filter((option) => option.value.toLowerCase().includes(string.toLowerCase())));
   };
 
   const handleClick = (_: React.MouseEvent<HTMLOptionElement>, option: Option) => {
     if (props.disabled) return;
     let activeOptions: Option[];
     if (isActive(option)) {
-      activeOptions = value.filter(el => el.key !== option.key);
+      activeOptions = value.filter((el) => el.key !== option.key);
       setPlaceholder('Filter');
     } else {
       activeOptions = [option];
@@ -71,7 +72,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
     setInputValue(res);
     onChange(activeOptions);
     setShow(false);
-  }
+  };
 
   const dropdownRef = useRef<null | HTMLDivElement>(null);
 
@@ -99,9 +100,9 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
         onChange={inputChange}
         afterSlot={<ArrowDownIcon color="secondary" />}
       />
-      {(show && !props.disabled) &&
+      {show && !props.disabled && (
         <select disabled={props.disabled} size={filteredOptions.length} multiple className={s.select}>
-          {filteredOptions.map(elem => {
+          {filteredOptions.map((elem) => {
             return (
               <option
                 className={cn(s.item, isActive(elem) && s.selected)}
@@ -111,13 +112,12 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
               >
                 {elem.value}
               </option>
-            )
-
+            );
           })}
-        </select >
-      }
+        </select>
+      )}
     </div>
-  )
+  );
 };
 
 export default MultiDropdown;

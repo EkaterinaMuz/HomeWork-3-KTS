@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { observer } from 'mobx-react-lite';
-import * as React from 'react'
+import * as React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useNavigate } from 'react-router-dom';
 import { useProductStore } from '@entities/products/models/store/context';
@@ -12,10 +12,10 @@ import ROUTES from '@shared/routes';
 import { Meta } from '@shared/types/Meta';
 import { Product } from '@shared/types/Products';
 import styles from './ProductsList.module.scss';
-
+console.log(styles);
 const ProductsList = () => {
-
   const productsStore = useProductStore();
+
 
   const navigate = useNavigate();
 
@@ -31,12 +31,13 @@ const ProductsList = () => {
         hasMore={productsStore.hasMore}
         style={{ overflowY: 'hidden', textAlign: 'center' }}
         loader={<Loader />}
-        endMessage='end'
+        endMessage='You"ve reached the end of product list'
       >
         <div className={cn(styles.catalog_wrapper)}>
-          {
-            productsStore.meta === Meta.loading && Array(6).fill(0).map((_, index) => <SkeletonCard key={index} />)
-          }
+          {productsStore.meta === Meta.loading &&
+            Array(6)
+              .fill(0)
+              .map((_, index) => <SkeletonCard key={index} />)}
           {productsStore.list.map((product: Product) => {
             return (
               <Card
@@ -47,14 +48,14 @@ const ProductsList = () => {
                 subtitle={product.description}
                 image={product.images[0]}
                 onClick={() => navigate(ROUTES.PRODUCT(String(product.id)))}
-                actionSlot={<Button color='accent'>Add to Cart</Button>}
+                actionSlot={<Button color="accent">Add to Cart</Button>}
               />
-            )
+            );
           })}
         </div>
       </InfiniteScroll>
     </>
-  )
-}
+  );
+};
 
 export default observer(ProductsList);

@@ -9,25 +9,25 @@ import SkeletonProduct from '@widgets/ProductDetailedInfo/UI/Skeleton';
 import RelatedItems from '@widgets/RelatedItems';
 
 const ProductDetailed = () => {
-	const productsStore = useProductStore();
-	const { id } = useParams();
+  const productsStore = useProductStore();
+  const { id } = useParams();
 
-	React.useEffect(() => {
-		if (id) {
-			productsStore.getProductById(id);
-		}
-	}, [id, productsStore]);
+  React.useEffect(() => {
+    if (id) {
+      productsStore.getProductById(id);
+    }
+  }, [id, productsStore]);
 
-	return (
-		<>
-			<Navigation />
-			<main className='container'>
-				<ButtonBack />
-				{productsStore.product ? <ProductDetailedInfo product={productsStore.product} /> : <SkeletonProduct />}
-				<RelatedItems products={productsStore.relatedItems} />
-			</main>
-		</>
-	)
-}
+  return (
+    <>
+      <Navigation />
+      <main className="container">
+        <ButtonBack />
+        {productsStore.product ? <ProductDetailedInfo product={productsStore.product} /> : <SkeletonProduct />}
+        <RelatedItems products={productsStore.relatedItems} />
+      </main>
+    </>
+  );
+};
 
 export default observer(ProductDetailed);

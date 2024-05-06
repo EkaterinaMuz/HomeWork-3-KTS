@@ -1,45 +1,45 @@
 .card {
-	display: block;
-	margin: 0 auto;
-	padding-bottom: 48px;
-	max-width: 360px;
-	width: 100%;
-	background-color: #FFF;
-	cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 48px;
+  max-width: 360px;
+  width: 100%;
+  background-color: #fff;
+  cursor: pointer;
 }
 .info {
-	padding: 48px 12px 0 12px;
+  padding: 48px 12px 0 12px;
 }
 .text {
-	display: flex;
-	flex-flow: column nowrap;
-	justify-content: space-between;
-	margin-bottom: 32px;
-	gap: 8px;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  gap: 8px;
 }
 .caption,
 .descr {
-	text-align: left;
+  text-align: left;
 }
 .img {
-	display: block;
-	width: 100%;
-	object-fit: cover;
-	height: 360px;
-	background-color: var(--button-primary-bg-disabled);
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  height: 360px;
+  background-color: var(--button-primary-bg-disabled);
 }
 .card:hover {
-	box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
-	background: var(--button-primary-text);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+  background: var(--button-primary-text);
 }
 .card-footer {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media (max-width: 420px) {
-	.card {
-		max-width: 300px;
-	}
+  .card {
+    max-width: 300px;
+  }
 }
