@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { createBrowserRouter } from "react-router-dom";
+import ErrorBoundary from '@shared/UI/ErrorBoundary/ErrorBoundary';
 import ROUTES from '@shared/routes';
 import Catalog from "./Catalog";
 import NotFound from './NotFound';
@@ -10,14 +11,17 @@ const Router = createBrowserRouter([
 	{
 		path: ROUTES.CATALOG,
 		element: <Catalog />,
+		ErrorBoundary: ErrorBoundary,
 	},
 	{
 		path: ROUTES.PRODUCT(),
-		element: <ProductDetailed />
+		element: <ProductDetailed />,
+		ErrorBoundary: ErrorBoundary,
 	},
 	{
 		path: ROUTES.NOTFOUND,
-		element: <NotFound />
+		element: <NotFound />,
+		ErrorBoundary: ErrorBoundary,
 	}
 ]);
 

@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Button from '@shared/UI/Button';
-import { Product } from '@shared/types';
+import { Product } from '@shared/types/Products';
 import styles from './ProductDetailedInfo.module.scss';
 
 const ProductDetailedInfo: React.FC<{ product: Product }> = ({ product }) => {

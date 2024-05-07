@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import styles from './CatalogInfo.module.scss';
 
 const CatalogIntro = () => {

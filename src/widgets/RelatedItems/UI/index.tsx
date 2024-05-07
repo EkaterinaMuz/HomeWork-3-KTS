@@ -4,7 +4,7 @@ import Button from '@shared/UI/Button';
 import Card from '@shared/UI/Card';
 import SkeletonCard from '@shared/UI/Card/Skeleton';
 import ROUTES from '@shared/routes';
-import { Product } from '@shared/types';
+import { Product } from '@shared/types/Products';
 import styles from './RelatedItems.module.scss';
 
 
@@ -15,7 +15,7 @@ const RelatedItems: React.FC<{ products: Product[] }> = ({ products }) => {
 			<h2 className={styles.title}>Related Items</h2>
 			<div className={styles.related_wrapper}>
 				{
-					!products.length && Array(3).fill(0).map(skeleton => <SkeletonCard key={skeleton} />)
+					!products.length && Array(3).fill(0).map((_, index) => <SkeletonCard key={index} />)
 				}
 				{
 					products.map((product) => {

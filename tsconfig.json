@@ -7,13 +7,12 @@
     "skipLibCheck": true,
     "baseUrl": "./src/",
     "paths": {
-      "@app": ["app/*"],
-      "@entities": ["entities/*"],
-      "@pages": ["pages/*"],
+      "@app/*": ["app/*"],
+      "@pages/*": ["pages/*"],
       "@widgets/*": ["widgets/*"],
+      "@entities/*": ["entities/*"],
       "@features/*": ["features/*"],
-      "@shared/*": ["shared/*"],
-      "@globals": ["shared/styles/globals.scss"]
+      "@shared/*": ["shared/*"]
     },
 
     "moduleResolution": "bundler",
@@ -31,5 +30,4 @@
   "types": ["vite-plugin-svgr/client"],
   "include": ["src", "main.tsx", "custom.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
-
 }

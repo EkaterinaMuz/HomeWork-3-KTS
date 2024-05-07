@@ -2,9 +2,9 @@ import cn from 'classnames';
 import * as React from 'react'
 import { Link } from 'react-router-dom';
 import ROUTES from '@shared/routes';
-import Bag from "./bag.svg";
-import Logo from "./logo.svg";
-import User from "./user.svg";
+import Bag from "./bag.svg?react";
+import Logo from "./logo.svg?react";
+import User from "./user.svg?react";
 import styles from './Navigation.module.scss';
 
 const Navigation = () => {
@@ -12,7 +12,7 @@ const Navigation = () => {
 		<header className={styles.header}>
 			<div>
 				<Link to={ROUTES.CATALOG}>
-					<img src={Logo} alt="logo" />
+					<Logo />
 				</Link>
 			</div>
 			<nav className={styles.nav_wrapper}>
@@ -29,8 +29,8 @@ const Navigation = () => {
 				</ul>
 			</nav>
 			<div className={styles.header_icons}>
-				<img src={Bag} alt="" />
-				<img src={User} alt="" />
+				<Bag />
+				<User />
 			</div>
 		</header>
 	)

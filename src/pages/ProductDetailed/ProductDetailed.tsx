@@ -1,47 +1,33 @@
+import { observer } from 'mobx-react-lite';
 import * as React from 'react';
-import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useProductStore } from '@entities/products/models/store/context';
 import ButtonBack from '@shared/UI/ButtonBack';
-import CatalogService from '@shared/api';
-import { Product } from '@shared/types';
 import Navigation from '@widgets/Navigation/UI';
 import ProductDetailedInfo from '@widgets/ProductDetailedInfo';
 import SkeletonProduct from '@widgets/ProductDetailedInfo/UI/Skeleton';
 import RelatedItems from '@widgets/RelatedItems';
 
 const ProductDetailed = () => {
-	const [product, setProduct] = useState<Product>()
-	const [categoryProducts, setCategoryProducts] = useState<Product[]>([])
-
+	const productsStore = useProductStore();
 	const { id } = useParams();
 
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				if (id) {
-					const result = await CatalogService.getProductById(id);
-					const relatedItems = await CatalogService.getProductsByCategory(result.category.id);
-					setProduct(result);
-					setCategoryProducts(relatedItems);
-				}
-			} catch (error) {
-				console.error('Error fetching products:', error);
-			}
-		};
-
-		fetchData();
-	}, [id]);
+	React.useEffect(() => {
+		if (id) {
+			productsStore.getProductById(id);
+		}
+	}, [id, productsStore]);
 
 	return (
 		<>
 			<Navigation />
 			<main className='container'>
 				<ButtonBack />
-				{product ? <ProductDetailedInfo product={product} /> : <SkeletonProduct />}
-				<RelatedItems products={categoryProducts} />
+				{productsStore.product ? <ProductDetailedInfo product={productsStore.product} /> : <SkeletonProduct />}
+				<RelatedItems products={productsStore.relatedItems} />
 			</main>
 		</>
 	)
 }
 
-export default ProductDetailed;
+export default observer(ProductDetailed);

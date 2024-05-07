@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React, { useEffect, useState } from 'react';
+import * as React from 'react';
 import s from './Input.module.scss';
 
 export type InputProps = Omit<
@@ -17,15 +17,20 @@ export type InputProps = Omit<
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ value, onChange, afterSlot, ...props }, ref) => {
 
-    const [state, setState] = useState<string>(value);
+    const [state, setState] = React.useState<string>(value);
 
-    useEffect(() => {
+    React.useEffect(() => {
       setState(value);
     }, [value]);
 
     return (
       <label htmlFor='input' className={cn(props.className, s.wrapper)}>
-        <input ref={ref} type='text' placeholder={props.placeholder} id='INPUT_ID' value={state} {...props} className={cn(props.className, s.myinput)}
+        <input
+          ref={ref}
+          type='text'
+          placeholder={props.placeholder}
+          id='INPUT_ID'
+          value={state} {...props} className={cn(props.className, s.myinput)}
           onChange={(e) => {
             setState(e.target.value);
             onChange(e.target.value);
