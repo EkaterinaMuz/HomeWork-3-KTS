@@ -2,10 +2,10 @@ import cn from 'classnames';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import ROUTES from '@shared/routes';
-import Bag from './bag.svg?react';
-import Logo from './logo.svg?react';
-import User from './user.svg?react';
-import * as styles from './Navigation.module.scss';
+import Bag from './bag.svg';
+import Logo from './logo.svg';
+import User from './user.svg';
+import styles from './Navigation.module.scss';
 
 const Navigation = () => {
   return (

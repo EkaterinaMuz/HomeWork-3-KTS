@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as styles from './CatalogInfo.module.scss';
+import styles from './CatalogInfo.module.scss';
 
 const CatalogIntro = () => {
   return (

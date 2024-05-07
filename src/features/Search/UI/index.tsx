@@ -10,7 +10,7 @@ import MultiDropdown, { Option } from '@shared/UI/MultiDropdown';
 import useLocalStore from '@shared/libs/hooks/useLocalStore';
 import { Meta } from '@shared/types/Meta';
 import useDebounce from '../libs/hooks/useDebounce';
-import * as styles from './Search.module.scss';
+import styles from './Search.module.scss';
 
 const Search = () => {
   const productsStore = useProductStore();

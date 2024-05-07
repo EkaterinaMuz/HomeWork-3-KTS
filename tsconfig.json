@@ -14,20 +14,25 @@
       "@features/*": ["features/*"],
       "@shared/*": ["shared/*"]
     },
-
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "esModuleInterop": true,
     "noEmit": true,
     "jsx": "react-jsx",
 
-    "strict": true,
+    "strict": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "types": ["vite-plugin-svgr/client"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "include": ["src", "main.tsx", "custom.d.ts", "declaration.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

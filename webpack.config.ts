@@ -1,33 +1,30 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from 'node:path';
+// import webpack from 'webpack';
+// import { fileURLToPath } from 'url';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 // import TsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
-
-const __filename = fileURLToPath(import.meta.url);
-
-const __dirname = path.dirname(__filename);
 
 const buildPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
 const isProd = process.env.NODE_ENV === 'production';
 
 const getSettingsForStyles = (withModules = false) => {
-  const cssLoaderWithModule = {
-    loader: 'css-loader',
-    options: {
-      modules: {
-        localIdentName: !isProd ? '[path][name]__[local]' : '[hash:base64:8]',
-      },
-    },
-  };
-
-  const scssLoader = {
-    test: /\.s?[ac]ss$/i,
-    use: [!isProd ? 'style-loader' : MiniCssExtractPlugin.loader, cssLoaderWithModule, 'sass-loader'],
-  };
-  return scssLoader;
+  return [
+    'style-loader',
+    !withModules
+      ? 'css-loader'
+      : {
+          loader: 'css-loader',
+          options: {
+            modules: {
+              localIdentName: !isProd ? '[path][name]__[local]' : '[hash:base64]',
+            },
+          },
+        },
+    'sass-loader',
+  ];
 };
 
 export default {
@@ -45,9 +42,22 @@ export default {
         test: /\.[tj]sx?$/,
         use: 'babel-loader',
       },
-      getSettingsForStyles(),
       {
-        test: /\.(png|svg|jpg)$/,
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+      },
+      {
+        test: /\.module\.s?css$/,
+        use: getSettingsForStyles(true),
+      },
+      {
+        test: /\.s?css$/,
+        exclude: /\.module\.s?css$/,
+        use: getSettingsForStyles(),
+      },
+      {
+        test: /\.(png|jpg)$/,
         type: 'asset/resource',
         parser: {
           dataUrlCondition: {
