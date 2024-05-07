@@ -12,10 +12,12 @@ import ROUTES from '@shared/routes';
 import { Meta } from '@shared/types/Meta';
 import { Product } from '@shared/types/Products';
 import styles from './ProductsList.module.scss';
-console.log(styles);
+import { parseImageArray } from '../lib';
+
+
+
 const ProductsList = () => {
   const productsStore = useProductStore();
-
 
   const navigate = useNavigate();
 
@@ -40,16 +42,18 @@ const ProductsList = () => {
               .map((_, index) => <SkeletonCard key={index} />)}
           {productsStore.list.map((product: Product) => {
             return (
-              <Card
-                key={product.id}
-                captionSlot={product.category.name}
-                contentSlot={product.price}
-                title={product.title}
-                subtitle={product.description}
-                image={product.images[0]}
-                onClick={() => navigate(ROUTES.PRODUCT(String(product.id)))}
-                actionSlot={<Button color="accent">Add to Cart</Button>}
-              />
+              <>
+                <Card
+                  key={product.id}
+                  captionSlot={product.category.name}
+                  contentSlot={product.price}
+                  title={product.title}
+                  subtitle={product.description}
+                  image={parseImageArray(product.images)}
+                  onClick={() => navigate(ROUTES.PRODUCT(String(product.id)))}
+                  actionSlot={<Button color="accent">Add to Cart</Button>}
+                />
+              </>
             );
           })}
         </div>
