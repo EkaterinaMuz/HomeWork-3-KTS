@@ -1,15 +1,15 @@
 import { action, computed, makeObservable, observable, runInAction } from 'mobx';
-import rootStore from '@shared/RootStore/instance';
-import ApiService, { ProductApiOptions } from '@shared/api';
+import rootStore from '@/shared/RootStore/instance';
+import ApiService, { ProductApiOptions } from '@/shared/api';
 import {
   CollectionModel,
   getInitialCollectionModel,
   linearizeCollection,
   normalizeCollection,
-} from '@shared/libs/collection';
-import { ILocalStore } from '@shared/libs/hooks';
-import { Meta } from '@shared/types/Meta';
-import { Product } from '@shared/types/Products';
+} from '@/shared/lib/collection';
+import { ILocalStore } from '@/shared/lib/hooks';
+import { Meta } from '@/shared/types/Meta';
+import { Product } from '@/entities/products/Products';
 
 type PrivateFields = '_list' | '_meta' | '_product' | '_hasMore' | '_realtedProducts';
 

@@ -1,10 +1,10 @@
 import { action, computed, makeObservable, observable, runInAction } from 'mobx';
-import { Option } from '@shared/UI/MultiDropdown';
-import ApiService from '@shared/api/ApiService';
-import { CollectionModel, getInitialCollectionModel, normalizeCollection } from '@shared/libs/collection';
-import { ILocalStore } from '@shared/libs/hooks';
-import { Meta } from '@shared/types/Meta';
-import { Category } from '@shared/types/Products';
+import { Option } from '@/shared/ui/MultiDropdown';
+import ApiService from '@/shared/api/ApiService';
+import { CollectionModel, getInitialCollectionModel, normalizeCollection } from '@/shared/lib/collection';
+import { ILocalStore } from '@/shared/lib/hooks';
+import { Meta } from '@/shared/types/Meta';
+import { Category } from '@/entities/products/Products';
 import { categoriesToOption } from '../lib/categoriesToOptions';
 
 type PrivateFields = '_categories' | '_meta' | '_currentCategory';

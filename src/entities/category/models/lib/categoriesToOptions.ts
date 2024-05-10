@@ -1,6 +1,6 @@
-import { Option } from '@shared/UI/MultiDropdown';
-import { CollectionModel } from '@shared/libs/collection';
-import { Category } from '@shared/types/Products';
+import { Option } from '@/shared/ui/MultiDropdown';
+import { CollectionModel } from '@/shared/lib/collection';
+import { Category } from '@/entities/products/Products';
 
 const categoriesToOption = (categories: CollectionModel<number, Category>): Option[] => {
   return categories.order.map((id: number) => ({

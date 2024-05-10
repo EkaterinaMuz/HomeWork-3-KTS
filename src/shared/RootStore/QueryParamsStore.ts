@@ -1,6 +1,6 @@
 import { action, makeObservable, observable } from 'mobx';
 import * as qs from 'qs';
-import { ILocalStore } from './../libs/hooks/useLocalStore';
+import { ILocalStore } from '../lib/hooks/useLocalStore';
 
 type PrivateFileds = '_params' | '_search';
 

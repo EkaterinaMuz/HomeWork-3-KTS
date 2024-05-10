@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import ROUTES from '@shared/routes';
+import ROUTES from '@/shared/routes';
 import Bag from './bag.svg';
 import Logo from './logo.svg';
 import User from './user.svg';
