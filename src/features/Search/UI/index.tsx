@@ -10,10 +10,10 @@ import MultiDropdown, { Option } from '@shared/UI/MultiDropdown';
 import useLocalStore from '@shared/libs/hooks/useLocalStore';
 import { Meta } from '@shared/types/Meta';
 import useDebounce from '../libs/hooks/useDebounce';
-import styles from './Search.module.scss';
+import s from './Search.module.scss';
 
 const Search = () => {
-  const productsStore = useProductStore();
+  const { productStore } = useProductStore();
   const [searchParams, setSearchParams] = useSearchParams();
   const title = rootStore.query.getParam('search') || '';
   const categoryId = searchParams.get('categoryId') || '';
@@ -41,8 +41,8 @@ const Search = () => {
   }, [categoryId, categoryStore]);
 
   React.useEffect(() => {
-    productsStore.getProductsList('/products', { offset: 0, limit: 10, title, categoryId });
-  }, [searchQuery, categoryId, title, productsStore]);
+    productStore.getProductsList('/products', { offset: 0, limit: 10, title, categoryId });
+  }, [searchQuery, categoryId, title, productStore]);
 
   const handleChange = (value: string) => {
     const search = value || null;
@@ -65,12 +65,12 @@ const Search = () => {
   };
 
   return (
-    <div className={styles.searchbar_wrapper}>
-      <div className={styles.search_wrapper}>
+    <div className={s.searchbar_wrapper}>
+      <div className={s.search_wrapper}>
         <Input value={searchParams.get('search') || ''} placeholder="Search product" onChange={handleChange} />
-        <Button loading={productsStore.meta === Meta.loading}>Find now</Button>
+        <Button loading={productStore.meta === Meta.loading}>Find now</Button>
       </div>
-      <div className={styles.dropdown_wrapper}>
+      <div className={s.dropdown_wrapper}>
         <MultiDropdown
           options={categoryStore.categories}
           value={

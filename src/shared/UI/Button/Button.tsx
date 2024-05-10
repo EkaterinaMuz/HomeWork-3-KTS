@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import * as React from 'react';
+import { Product } from '@shared/types/Products';
 import Loader from '../Loader';
 import Text from '../Text';
 import s from './Button.module.scss';
@@ -12,9 +13,10 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   color?: string;
   className?: string;
+  onClick?: (product: Product) => void
 };
 
-const Button: React.FC<ButtonProps> = ({ loading, disabled, children, className, color, ...props }) => {
+const Button: React.FC<ButtonProps> = ({ loading, disabled, children, className, color, onClick, ...props }) => {
   return (
     <>
       <button
@@ -23,6 +25,7 @@ const Button: React.FC<ButtonProps> = ({ loading, disabled, children, className,
           [s.disabled]: disabled,
         })}
         disabled={disabled ? true : loading}
+        onClick={onClick}
         {...props}
       >
         {loading && <Loader size="s" data-testid="loader" />}

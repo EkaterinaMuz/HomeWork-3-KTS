@@ -1,3 +1,5 @@
+const path = require('node:path');
+
 module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
@@ -30,6 +32,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'import/default': 'off',
     'prefer-const': 'off',
+    'no-explicit-any': 'off',
     'import/order': [
       'error',
       {

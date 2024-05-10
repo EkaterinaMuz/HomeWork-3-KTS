@@ -1,10 +1,7 @@
 import path from 'node:path';
-// import webpack from 'webpack';
-// import { fileURLToPath } from 'url';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-// import TsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
 
 const buildPath = path.resolve(__dirname, 'dist');
 const srcPath = path.resolve(__dirname, 'src');
@@ -93,6 +90,5 @@ export default {
     port: 9000,
     hot: true,
     historyApiFallback: true,
-    // contentBase: path.resolve(__dirname, 'src'),
   },
 };

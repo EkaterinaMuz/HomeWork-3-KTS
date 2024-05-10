@@ -9,22 +9,22 @@ import SkeletonProduct from '@widgets/ProductDetailedInfo/UI/Skeleton';
 import RelatedItems from '@widgets/RelatedItems';
 
 const ProductDetailed = () => {
-  const productsStore = useProductStore();
+  const { productStore } = useProductStore();
   const { id } = useParams();
 
   React.useEffect(() => {
     if (id) {
-      productsStore.getProductById(id);
+      productStore.getProductById(id);
     }
-  }, [id, productsStore]);
+  }, [id, productStore]);
 
   return (
     <>
       <Navigation />
       <main className="container">
         <ButtonBack />
-        {productsStore.product ? <ProductDetailedInfo product={productsStore.product} /> : <SkeletonProduct />}
-        <RelatedItems products={productsStore.relatedItems} />
+        {productStore.product ? <ProductDetailedInfo product={productStore.product} /> : <SkeletonProduct />}
+        <RelatedItems products={productStore.relatedItems} />
       </main>
     </>
   );
