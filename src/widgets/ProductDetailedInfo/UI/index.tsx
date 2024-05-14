@@ -1,6 +1,7 @@
 import * as React from 'react';
+import Slider from '@/features/ProductSlider/ui/Slider';
+import Button from '@/shared/ui/Button';
 import { useProductStore } from '@entities/products/models/store/context';
-import Button from '@shared/UI/Button';
 import { Product } from '@shared/types/Products';
 import s from './ProductDetailedInfo.module.scss';
 
@@ -9,7 +10,8 @@ const ProductDetailedInfo: React.FC<{ product: Product }> = ({ product }) => {
   return (
     <article className={s.card_wrapper}>
       <div className={s.card_gallery}>
-        <img src={product.images[0]} alt="" />
+        <Slider slides={product.images} />
+        {/* <img src={product.images[0]} alt="" /> */}
       </div>
       <div className={s.product_info}>
         <div className={s.product_description}>

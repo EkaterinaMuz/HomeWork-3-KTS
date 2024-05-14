@@ -6,8 +6,8 @@ import {
   getInitialCollectionModel,
   linearizeCollection,
   normalizeCollection,
-} from '@shared/libs/collection';
-import { ILocalStore } from '@shared/libs/hooks';
+} from '@/shared/lib/collection';
+import { ILocalStore } from '@/shared/lib/hooks';
 import { Meta } from '@shared/types/Meta';
 import { Product } from '@shared/types/Products';
 

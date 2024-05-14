@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import { RouterProvider } from 'react-router-dom';
 import { ProductStoreProvider } from '@entities/products/models/store/context';
-import ErrorBoundary from '@shared/UI/ErrorBoundary/ErrorBoundary';
+import ErrorBoundary from '@/shared/ui/ErrorBoundary/ErrorBoundary';
 import Router from '../pages';
 
 function App() {

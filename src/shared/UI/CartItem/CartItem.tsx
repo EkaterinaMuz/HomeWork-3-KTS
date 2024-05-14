@@ -1,13 +1,22 @@
 import cn from 'classnames';
+import { observer } from 'mobx-react-lite';
 import * as React from 'react';
+import { useProductStore } from '@/entities/products/models/store/context';
 import { CartProduct } from '@shared/types/Products';
 import { parseImageArray } from '@widgets/ProductsList/lib';
 import Text from '../Text';
+import DeleteIcon from '../icons/DeleteIcon';
 import s from './CartItem.module.scss';
 
 const CartItem: React.FC<{ product: CartProduct }> = ({ product }) => {
+	const { shoppingCartStore } = useProductStore();
+
+	const deleteItem = () => {
+		shoppingCartStore.deleteFromCart(product);
+	}
 	return (
 		<article className={s.card_wrapper}>
+			<DeleteIcon className={s.delete_icon} onClick={deleteItem} />
 			<div className={s.card_right}>
 				<img src={parseImageArray(product.images)} className={s.card_img} alt={product.title} />
 				<Text view='p-16'>{product.title}</Text>
@@ -21,4 +30,4 @@ const CartItem: React.FC<{ product: CartProduct }> = ({ product }) => {
 	);
 };
 
-export default CartItem;
+export default observer(CartItem);

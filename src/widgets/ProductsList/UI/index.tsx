@@ -3,11 +3,11 @@ import { observer } from 'mobx-react-lite';
 import * as React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useNavigate } from 'react-router-dom';
+import Button from '@/shared/ui/Button';
+import Card from '@/shared/ui/Card';
+import SkeletonCard from '@/shared/ui/Card/Skeleton';
+import Loader from '@/shared/ui/Loader';
 import { useProductStore } from '@entities/products/models/store/context';
-import Button from '@shared/UI/Button';
-import Card from '@shared/UI/Card';
-import SkeletonCard from '@shared/UI/Card/Skeleton';
-import Loader from '@shared/UI/Loader';
 import ROUTES from '@shared/routes';
 import { Meta } from '@shared/types/Meta';
 import { Product } from '@shared/types/Products';
@@ -18,7 +18,7 @@ const ProductsList = () => {
   const { productStore, shoppingCartStore } = useProductStore();
 
   const navigate = useNavigate();
-  console.log(shoppingCartStore.cartItems);
+  // console.log(shoppingCartStore.cartItems);
 
   return (
     <>

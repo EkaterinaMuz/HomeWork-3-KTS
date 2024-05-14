@@ -1,5 +1,5 @@
-import { Option } from '@shared/UI/MultiDropdown';
-import { CollectionModel } from '@shared/libs/collection';
+import { Option } from '@/shared/ui/MultiDropdown';
+import { CollectionModel } from '@/shared/lib/collection';
 import { Category } from '@shared/types/Products';
 
 const categoriesToOption = (categories: CollectionModel<number, Category>): Option[] => {

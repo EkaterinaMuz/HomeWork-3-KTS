@@ -22,5 +22,6 @@ export const normalizeCollection = <K extends string | number, T>(
 };
 
 export const linearizeCollection = <K extends string | number, T>(collection: CollectionModel<K, T>): T[] => {
+  console.log(collection);
   return collection.order.map((id: K) => collection.entities[id]);
 };

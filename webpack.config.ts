@@ -9,7 +9,7 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const getSettingsForStyles = (withModules = false) => {
   return [
-    'style-loader',
+    isProd ? MiniCssExtractPlugin.loader : 'style-loader',
     !withModules
       ? 'css-loader'
       : {
@@ -17,9 +17,18 @@ const getSettingsForStyles = (withModules = false) => {
           options: {
             modules: {
               localIdentName: !isProd ? '[path][name]__[local]' : '[hash:base64]',
+              namedExport: false,
             },
           },
         },
+    {
+      loader: 'postcss-loader',
+      options: {
+        postcssOptions: {
+          plugins: ['autoprefixer'],
+        },
+      },
+    },
     'sass-loader',
   ];
 };
@@ -54,13 +63,8 @@ export default {
         use: getSettingsForStyles(),
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|jpeg)$/,
         type: 'asset/resource',
-        parser: {
-          dataUrlCondition: {
-            maxSize: 10 * 1024,
-          },
-        },
       },
     ],
   },
@@ -87,7 +91,7 @@ export default {
   },
   devServer: {
     host: '127.0.0.1',
-    port: 9000,
+    port: 5000,
     hot: true,
     historyApiFallback: true,
   },
