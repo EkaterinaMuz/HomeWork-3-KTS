@@ -1,6 +1,6 @@
 import * as React from 'react';
+import { Product } from '@/entities/products/types';
 import Button from '@/shared/ui/Button';
-import { Product } from '@/entities/products/Products';
 import styles from './ProductDetailedInfo.module.scss';
 
 const ProductDetailedInfo: React.FC<{ product: Product }> = ({ product }) => {

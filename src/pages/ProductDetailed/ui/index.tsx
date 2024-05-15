@@ -5,7 +5,7 @@ import { useProductStore } from '@/entities/products/models/store/context';
 import ButtonBack from '@/shared/ui/ButtonBack';
 import Navigation from '@/widgets/Navigation/ui';
 import ProductDetailedInfo from '@/widgets/ProductDetailedInfo';
-import SkeletonProduct from '@/widgets/ProductDetailedInfo/ui/Skeleton';
+import SkeletonProduct from '@/widgets/ProductDetailedInfo/UI/Skeleton';
 import RelatedItems from '@/widgets/RelatedItems';
 
 const ProductDetailed = () => {

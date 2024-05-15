@@ -3,16 +3,16 @@ import { observer } from 'mobx-react-lite';
 import * as React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useNavigate } from 'react-router-dom';
+import { Product } from '@/entities/products/types';
 import { useProductStore } from '@entities/products/models/store/context';
+import ROUTES from '@shared/routes';
+import { Meta } from '@shared/types/Meta';
 import Button from '@shared/ui/Button';
 import Card from '@shared/ui/Card';
 import SkeletonCard from '@shared/ui/Card/Skeleton';
 import Loader from '@shared/ui/Loader';
-import ROUTES from '@shared/routes';
-import { Meta } from '@shared/types/Meta';
-import { Product } from '@entities/products/Products';
-import styles from './ProductsList.module.scss';
 import { parseImageArray } from '../lib';
+import styles from './ProductsList.module.scss';
 
 
 

@@ -3,7 +3,8 @@ export type CollectionModel<K extends string | number, T> = {
   entities: Record<K, T>;
 };
 
-export const getInitialCollectionModel = (): CollectionModel<string | number, unknown> => ({
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getInitialCollectionModel = (): CollectionModel<any, any> => ({
   order: [],
   entities: {},
 });

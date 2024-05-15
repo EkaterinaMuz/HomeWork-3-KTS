@@ -1,6 +1,7 @@
 import { action, computed, makeObservable, observable, runInAction } from 'mobx';
+import { ParsedQs } from 'qs';
 import rootStore from '@/shared/RootStore/instance';
-import ApiService, { ProductApiOptions } from '@/shared/api';
+import ApiService from '@/shared/api';
 import {
   CollectionModel,
   getInitialCollectionModel,
@@ -9,9 +10,15 @@ import {
 } from '@/shared/lib/collection';
 import { ILocalStore } from '@/shared/lib/hooks';
 import { Meta } from '@/shared/types/Meta';
-import { Product } from '@/entities/products/Products';
+import { Product } from '../../types';
 
 type PrivateFields = '_list' | '_meta' | '_product' | '_hasMore' | '_realtedProducts';
+interface ProductApiOptions {
+  limit: number;
+  offset: number;
+  title?: string | string[] | ParsedQs | ParsedQs[];
+  categoryId?: string | string[] | ParsedQs | ParsedQs[];
+}
 
 class ProductsStore implements ILocalStore {
   private _list: CollectionModel<number | string, Product> = getInitialCollectionModel();
@@ -60,7 +67,7 @@ class ProductsStore implements ILocalStore {
       if (!limit) {
         limit = 10;
       }
-      const response = await ApiService.get<Product[]>(url, params);
+      const response = await ApiService.get<Product[], ProductApiOptions>(url, params);
       response.length < 10 ? (this._hasMore = false) : (this._hasMore = true);
       runInAction(() => {
         if (!offset) {
@@ -91,9 +98,11 @@ class ProductsStore implements ILocalStore {
     this._meta = Meta.loading;
     this._product = null;
     try {
-      const product = await ApiService.get<Product>(`/products/${id}`);
+      const product = await ApiService.get<Product, ProductApiOptions>(`/products/${id}`);
       const categoryId = product.category.id;
-      const relatedProducts = await ApiService.get<Product[]>(`/categories/${categoryId}/products/?offset=0&limit=3`);
+      const relatedProducts = await ApiService.get<Product[], ProductApiOptions>(
+        `/categories/${categoryId}/products/?offset=0&limit=3`,
+      );
       this._realtedProducts = relatedProducts;
       this._product = product;
       this._meta = Meta.success;

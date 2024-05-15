@@ -1,13 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { ParsedQs } from 'qs';
 import { baseURL } from './constants';
-
-export interface ProductApiOptions {
-  limit: number;
-  offset: number;
-  title?: string | string[] | ParsedQs | ParsedQs[];
-  categoryId?: string | string[] | ParsedQs | ParsedQs[];
-}
 
 class ApiService {
   private _axios: AxiosInstance;
@@ -20,7 +12,7 @@ class ApiService {
   constructor() {
     this._axios = axios.create(this._configs);
   }
-  async get<T>(url: string, options?: ProductApiOptions): Promise<T> {
+  async get<T, U>(url: string, options?: U): Promise<T> {
     try {
       const response: AxiosResponse<T> = await this._axios.get<T>(url, { params: options });
       return response.data;
