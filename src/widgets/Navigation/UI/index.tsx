@@ -3,11 +3,11 @@ import { observer } from 'mobx-react-lite';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import Text from '@/shared/ui/Text';
-import { useProductStore } from '@entities/products/models/store/context';
 import ROUTES from '@shared/routes';
 import Bag from './bag.svg';
 import Logo from './logo.svg';
 import User from './user.svg';
+import { useProductStore } from '@entities/products/models/store/context';
 import s from './Navigation.module.scss';
 
 const Navigation = () => {
@@ -38,7 +38,7 @@ const Navigation = () => {
             <Bag />
           </Link>
           {
-            shoppingCartStore.cartItems.length > 0 &&
+            shoppingCartStore.cartItems.length &&
             (<Text view='p-14' className={s.cart_number}>
               {shoppingCartStore.cartItems.length}
             </Text>)

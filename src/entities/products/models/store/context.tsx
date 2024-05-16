@@ -1,6 +1,6 @@
 import React, { createContext, ReactNode, useContext } from 'react';
-import CartStore from '@entities/cart/models/store';
 import useLocalStore from '@/shared/lib/hooks/useLocalStore';
+import CartStore from '@entities/cart/models/store';
 import ProductsStore from './ProductsStore';
 
 const context = createContext<StoreValue | null>(null);

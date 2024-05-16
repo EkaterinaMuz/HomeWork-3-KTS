@@ -1,8 +1,8 @@
 import { action, computed, makeObservable, observable, runInAction } from 'mobx';
-import { Option } from '@/shared/ui/MultiDropdown';
-import ApiService from '@shared/api/ApiService';
 import { CollectionModel, getInitialCollectionModel, normalizeCollection } from '@/shared/lib/collection';
 import { ILocalStore } from '@/shared/lib/hooks';
+import { Option } from '@/shared/ui/MultiDropdown';
+import ApiService from '@shared/api/ApiService';
 import { Meta } from '@shared/types/Meta';
 import { Category } from '@shared/types/Products';
 import { categoriesToOption } from '../lib/categoriesToOptions';

@@ -1,6 +1,4 @@
 import { action, computed, makeObservable, observable, runInAction } from 'mobx';
-import rootStore from '@shared/RootStore/instance';
-import ApiService, { ProductApiOptions } from '@shared/api';
 import {
   CollectionModel,
   getInitialCollectionModel,
@@ -8,6 +6,8 @@ import {
   normalizeCollection,
 } from '@/shared/lib/collection';
 import { ILocalStore } from '@/shared/lib/hooks';
+import rootStore from '@shared/RootStore/instance';
+import ApiService, { ProductApiOptions } from '@shared/api';
 import { Meta } from '@shared/types/Meta';
 import { Product } from '@shared/types/Products';
 

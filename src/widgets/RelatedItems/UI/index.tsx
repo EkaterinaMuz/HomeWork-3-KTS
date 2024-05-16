@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useProductStore } from '@entities/products/models/store/context';
+import { useProductStore } from '@/entities/products/models/store/context';
+import ROUTES from '@/shared/routes';
+import { Product } from '@/shared/types/Products';
 import Button from '@/shared/ui/Button';
 import Card from '@/shared/ui/Card';
 import SkeletonCard from '@/shared/ui/Card/Skeleton';
-import ROUTES from '@shared/routes';
-import { Product } from '@shared/types/Products';
 import s from './RelatedItems.module.scss';
 
 const RelatedItems: React.FC<{ products: Product[] }> = ({ products }) => {
