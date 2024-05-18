@@ -1,8 +1,8 @@
 import * as React from 'react';
+import { Product } from '@/entities/products/types';
 import Slider from '@/features/ProductSlider/ui/Slider';
-import Button from '@/shared/ui/Button';
+import Button from '@/shared/UI/Button';
 import { useProductStore } from '@entities/products/models/store/context';
-import { Product } from '@shared/types/Products';
 import s from './ProductDetailedInfo.module.scss';
 
 const ProductDetailedInfo: React.FC<{ product: Product }> = ({ product }) => {

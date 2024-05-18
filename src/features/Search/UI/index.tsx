@@ -1,11 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import * as React from 'react';
 import { useSearchParams } from 'react-router-dom';
+import Button from '@/shared/UI/Button';
+import Input from '@/shared/UI/Input';
+import MultiDropdown, { Option } from '@/shared/UI/MultiDropdown';
 import useLocalStore from '@/shared/lib/hooks/useLocalStore';
 import { Meta } from '@/shared/types/Meta';
-import Button from '@/shared/ui/Button';
-import Input from '@/shared/ui/Input';
-import MultiDropdown, { Option } from '@/shared/ui/MultiDropdown';
 import CategoryStore from '@entities/category/models/store';
 import { useProductStore } from '@entities/products/models/store/context';
 import rootStore from '@shared/RootStore/instance';

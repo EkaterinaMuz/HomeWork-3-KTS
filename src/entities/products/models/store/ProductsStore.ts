@@ -9,7 +9,7 @@ import { ILocalStore } from '@/shared/lib/hooks';
 import rootStore from '@shared/RootStore/instance';
 import ApiService, { ProductApiOptions } from '@shared/api';
 import { Meta } from '@shared/types/Meta';
-import { Product } from '@shared/types/Products';
+import { Product } from '../../types';
 
 type PrivateFields = '_list' | '_meta' | '_product' | '_hasMore' | '_realtedProducts';
 

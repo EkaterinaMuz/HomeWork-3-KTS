@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack serve --mode=development",
-    "build": "cross-env NODE_ENV=production webpack --mode=production",
+    "build": "cross-env NODE_ENV=production  webpack --mode=production",
+    "preview": "vite preview",
     "lint": "eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint \"./src/**/*.{js,jsx,ts,tsx}\" --fix",
     "prettier:fix": "prettier --write \"src/**/*\""
@@ -26,7 +27,6 @@
     "react-infinite-scroll-component": "^6.1.0",
     "react-loading-skeleton": "^3.4.0",
     "react-router-dom": "^6.22.3",
-    "react-toastify": "^10.0.5",
     "sass": "^1.76.0"
   },
   "devDependencies": {

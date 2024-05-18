@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import React, { useState } from 'react';
-import SliderArrow from '@/shared/ui/icons/SliderArrow';
+import SliderArrow from '@/shared/UI/icons/SliderArrow';
 import s from './Slider.module.scss';
 
 type SliderProps = {

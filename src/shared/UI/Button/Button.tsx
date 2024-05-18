@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import * as React from 'react';
-import { Product } from '@shared/types/Products';
+import { Product } from '@/entities/products/types';
 import Loader from '../Loader';
 import Text from '../Text';
 import s from './Button.module.scss';

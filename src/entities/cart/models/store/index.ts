@@ -1,9 +1,9 @@
 import { action, computed, makeObservable, observable, set, toJS } from 'mobx';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { CartProduct, Product } from '@/entities/products/types';
 import { CollectionModel, getInitialCollectionModel, linearizeCollection } from '@/shared/lib/collection';
 import { ILocalStore } from '@/shared/lib/hooks';
-import { CartProduct, Product } from '@/shared/types/Products';
 
 type PrivateFields = '_cartItems' | '_totalAmount';
 

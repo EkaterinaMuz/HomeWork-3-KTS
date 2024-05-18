@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import * as React from 'react'
-import CartItem from '@/shared/ui/CartItem/CartItem';
-import Text from '@/shared/ui/Text';
+import CartItem from '@/shared/UI/CartItem/CartItem';
+import Text from '@/shared/UI/Text';
 import { useProductStore } from '@entities/products/models/store/context';
 import s from './CartProductList.module.scss';
 

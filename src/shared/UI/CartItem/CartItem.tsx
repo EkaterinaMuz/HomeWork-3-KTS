@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import * as React from 'react';
 import { useProductStore } from '@/entities/products/models/store/context';
-import { CartProduct } from '@shared/types/Products';
+import { CartProduct } from '@/entities/products/types';
 import { parseImageArray } from '@widgets/ProductsList/lib';
 import Text from '../Text';
 import DeleteIcon from '../icons/DeleteIcon';
