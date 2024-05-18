@@ -34,6 +34,6 @@
       "module": "CommonJS"
     }
   },
-  "include": ["src", "main.tsx", "custom.d.ts", "declaration.d.ts"],
+  "include": ["src", "main.tsx", "global.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

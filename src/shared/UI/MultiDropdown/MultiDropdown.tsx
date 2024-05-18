@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { SearchParams } from '@/features/Search/ui';
 import Input from '../Input';
 import ArrowDownIcon from '../icons/ArrowDownIcon';
 import s from './MultiDropdown.module.scss';
@@ -19,7 +20,7 @@ export type MultiDropdownProps = {
   /** Текущие выбранные значения поля, может быть пустым */
   value: Option[];
   /** Callback, вызываемый при выборе варианта */
-  onChange: (value: Option[]) => void;
+  onChange: (value: SearchParams) => void;
   /** Заблокирован ли дропдаун */
   disabled?: boolean;
   /** Возвращает строку которая будет выводится в инпуте. В случае если опции не выбраны, строка должна отображаться как placeholder. */
@@ -55,8 +56,8 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
     setFilteredOptions(options);
   }, [options]);
 
-  const inputChange = (string: string) => {
-    setFilteredOptions(options.filter((option) => option.value.toLowerCase().includes(string.toLowerCase())));
+  const inputChange = ({ searchValue }) => {
+    setFilteredOptions(options.filter((option) => option.value.toLowerCase().includes(searchValue.string.toLowerCase())));
   };
 
   const handleClick = (_: React.MouseEvent<HTMLOptionElement>, option: Option) => {
@@ -70,7 +71,7 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
     }
     const res = getTitle(activeOptions);
     setInputValue(res);
-    onChange(activeOptions);
+    onChange({ options: activeOptions });
     setShow(false);
   };
 

@@ -5,6 +5,7 @@ import Button from '@/shared/UI/Button';
 import { useProductStore } from '@entities/products/models/store/context';
 import s from './ProductDetailedInfo.module.scss';
 
+
 const ProductDetailedInfo: React.FC<{ product: Product }> = ({ product }) => {
   const { shoppingCartStore } = useProductStore();
   return (

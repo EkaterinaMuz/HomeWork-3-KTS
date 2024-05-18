@@ -71,6 +71,7 @@ export default {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',
+      favicon: './public/vite.svg',
     }),
     !isProd && new ReactRefreshWebpackPlugin(),
     isProd &&
