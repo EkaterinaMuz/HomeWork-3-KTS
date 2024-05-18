@@ -18,7 +18,11 @@ const ProductsList = () => {
   const { productStore, shoppingCartStore } = useProductStore();
 
   const navigate = useNavigate();
-  // console.log(shoppingCartStore.cartItems);
+
+  const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>, product: Product) => {
+    e.stopPropagation();
+    shoppingCartStore.addToCart(product)
+  }
 
   return (
     <>
@@ -53,7 +57,7 @@ const ProductsList = () => {
                   actionSlot={
                     <Button
                       color="accent"
-                      onClick={() => shoppingCartStore.addToCart(product)}
+                      onClick={(e) => onButtonClick(e, product)}
                     >
                       Add to Cart
                     </Button>

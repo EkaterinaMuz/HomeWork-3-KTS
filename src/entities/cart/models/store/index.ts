@@ -1,4 +1,6 @@
-import { action, computed, makeAutoObservable, makeObservable, observable, remove, set, toJS } from 'mobx';
+import { action, computed, makeObservable, observable, set, toJS } from 'mobx';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { CollectionModel, getInitialCollectionModel, linearizeCollection } from '@/shared/lib/collection';
 import { ILocalStore } from '@/shared/lib/hooks';
 import { CartProduct, Product } from '@/shared/types/Products';
@@ -13,8 +15,6 @@ class CartStore implements ILocalStore {
   private _totalAmount: number = 0;
 
   constructor() {
-    // makeAutoObservable(this, {}, { autoBind: true, deep: false });
-
     makeObservable<CartStore, PrivateFields>(this, {
       _cartItems: observable,
       _totalAmount: observable,
@@ -44,22 +44,23 @@ class CartStore implements ILocalStore {
     if (itemIndex !== undefined) {
       set(this._cartItems.entities[product.id], 'quantity', (this._cartItems.entities[product.id].quantity += 1));
     } else {
-      set(this._cartItems.entities, product.id, cartProduct);
-      this._cartItems.order.push(product.id);
+      const cartItems = toJS(this._cartItems);
+      cartItems.entities[product.id] = cartProduct;
+      cartItems.order.push(product.id);
+      this._cartItems = cartItems;
     }
-
+    toast(`${product.title} added to your cart!`);
     this.updateTotalAmount();
     localStorage.setItem('cartItems', JSON.stringify(this._cartItems));
   }
 
   deleteFromCart(product: Product) {
-    const itemIndex = this._cartItems.order.find((id) => id === product.id);
-    console.log(this.cartItems);
-
-    if (Number(itemIndex) >= 0) {
-      remove(this._cartItems.entities, String(product.id));
-      this._cartItems.order.splice(Number(itemIndex), 1);
-      console.log(this.cartItems);
+    const cartItems = toJS(this._cartItems);
+    const itemIndex = cartItems.order.findIndex((id) => id === product.id);
+    if (itemIndex >= 0) {
+      delete cartItems.entities[product.id];
+      cartItems.order.splice(itemIndex, 1);
+      this._cartItems = cartItems;
     }
     this.updateTotalAmount();
     localStorage.setItem('cartItems', JSON.stringify(this._cartItems));
