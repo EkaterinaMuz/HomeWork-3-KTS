@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Navigation from '@/widgets/Navigation/UI';
+import Navigation from '@/widgets/Navigation/ui';
 import s from './NotFound.module.scss';
 
 const NotFound = () => {

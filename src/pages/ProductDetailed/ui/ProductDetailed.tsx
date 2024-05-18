@@ -1,9 +1,9 @@
 import { observer } from 'mobx-react-lite';
 import * as React from 'react';
 import { useParams } from 'react-router-dom';
-import ButtonBack from '@/shared/UI/ButtonBack';
-import Navigation from '@/widgets/Navigation/UI';
-import SkeletonProduct from '@/widgets/ProductDetailedInfo/UI/Skeleton';
+import ButtonBack from '@/shared/ui/ButtonBack';
+import Navigation from '@/widgets/Navigation/ui';
+import SkeletonProduct from '@/widgets/ProductDetailedInfo/ui/Skeleton';
 import { useProductStore } from '@entities/products/models/store/context';
 import ProductDetailedInfo from '@widgets/ProductDetailedInfo';
 import RelatedItems from '@widgets/RelatedItems';

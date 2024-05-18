@@ -4,10 +4,10 @@ import * as React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useNavigate } from 'react-router-dom';
 import { Product } from '@/entities/products/types';
-import Button from '@/shared/UI/Button';
-import Card from '@/shared/UI/Card';
-import SkeletonCard from '@/shared/UI/Card/Skeleton';
-import Loader from '@/shared/UI/Loader';
+import Button from '@/shared/ui/Button';
+import Card from '@/shared/ui/Card';
+import SkeletonCard from '@/shared/ui/Card/Skeleton';
+import Loader from '@/shared/ui/Loader';
 import { useProductStore } from '@entities/products/models/store/context';
 import ROUTES from '@shared/routes';
 import { Meta } from '@shared/types/Meta';
@@ -21,7 +21,8 @@ const ProductsList = () => {
 
   const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>, product: Product) => {
     e.stopPropagation();
-    shoppingCartStore.addToCart(product)
+    shoppingCartStore.addToCart(product);
+    shoppingCartStore.isAdded(product.id);
   }
 
   return (
@@ -59,7 +60,11 @@ const ProductsList = () => {
                       color="accent"
                       onClick={(e) => onButtonClick(e, product)}
                     >
-                      Add to Cart
+                      {shoppingCartStore.isAdded(product.id)
+                        ?
+                        'Added to Cart'
+                        :
+                        'Add to Cart'}
                     </Button>
                   }
                 />

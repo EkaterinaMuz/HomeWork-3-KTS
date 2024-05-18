@@ -23,6 +23,7 @@ class CartStore implements ILocalStore {
       updateTotalAmount: action.bound,
       cartItems: computed,
       totalAmount: computed,
+      isAdded: action.bound,
     });
     this.updateTotalAmount();
   }
@@ -72,6 +73,12 @@ class CartStore implements ILocalStore {
       total += item.price * item.quantity;
     });
     this._totalAmount = total;
+  }
+
+  isAdded(id) {
+    console.log(id);
+    const cartItems = toJS(this._cartItems);
+    return cartItems.order.includes(id);
   }
 
   destroy(): void {}

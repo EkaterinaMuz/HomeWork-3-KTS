@@ -32,7 +32,6 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(({ value, onChange,
         className={cn(props.className, s.myinput)}
         onChange={(e) => {
           setState(e.target.value);
-          console.log(e.target.value);
           onChange({ searchValue: e.target.value });
         }}
       />

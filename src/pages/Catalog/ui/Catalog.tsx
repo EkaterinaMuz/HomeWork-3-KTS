@@ -2,7 +2,7 @@ import * as React from 'react';
 import Search from '@/features/Search';
 import { useQueryParams } from '@/shared/lib/hooks';
 import CatalogIntro from '@/widgets/CatalogIntro';
-import Navigation from '@/widgets/Navigation/UI';
+import Navigation from '@/widgets/Navigation/ui';
 import ProductsList from '@widgets/ProductsList';
 
 const Catalog = () => {

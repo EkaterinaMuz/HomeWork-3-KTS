@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
-import ErrorBoundary from '@/shared/UI/ErrorBoundary/ErrorBoundary';
+import ErrorBoundary from '@/shared/ui/ErrorBoundary/ErrorBoundary';
 import ROUTES from '@shared/routes';
 import Cart from './Cart';
 import Catalog from './Catalog';
