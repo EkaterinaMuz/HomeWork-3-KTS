@@ -63,13 +63,8 @@ export default {
         use: getSettingsForStyles(),
       },
       {
-        test: /\.(png|jpg)$/,
+        test: /\.(png|jpg|jpeg)$/,
         type: 'asset/resource',
-        parser: {
-          dataUrlCondition: {
-            maxSize: 10 * 1024,
-          },
-        },
       },
     ],
   },
@@ -97,7 +92,7 @@ export default {
   },
   devServer: {
     host: '127.0.0.1',
-    port: 9000,
+    port: 5000,
     hot: true,
     historyApiFallback: true,
   },

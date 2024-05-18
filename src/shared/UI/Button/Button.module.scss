@@ -1,6 +1,7 @@
 @use "@shared/styles/globals.scss" as *;
 
 .btn {
+  position: relative;
   min-width: 137px;
   gap: 0 12px;
   padding: 14px 20px;
@@ -11,6 +12,7 @@
   border: none;
   outline: none;
   cursor: pointer;
+  z-index: 999;
 }
 .btn svg path {
   fill: #fff;

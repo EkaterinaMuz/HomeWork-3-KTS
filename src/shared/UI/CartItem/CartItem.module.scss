@@ -1,0 +1,35 @@
+@use "@shared/styles/globals.scss" as *;
+
+.card_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 210px;
+  padding: 70px 20px;
+  border-bottom: 2px solid #f3f3f3;
+}
+.card_right {
+  display: flex;
+  align-items: center;
+  max-width: 360px;
+  gap: 30px;
+}
+.card_left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 35%;
+  gap: 10px;
+}
+.card_img {
+  border-radius: 7px;
+  width: 137px;
+  height: 94px;
+}
+.delete_icon {
+  cursor: pointer;
+  transition: 0.3s all;
+}
+.delete_icon:hover {
+  scale: 1.2;
+}

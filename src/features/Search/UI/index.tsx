@@ -9,14 +9,14 @@ import Button from '@/shared/ui/Button';
 import Input from '@/shared/ui/Input';
 import MultiDropdown, { Option } from '@/shared/ui/MultiDropdown';
 import useDebounce from '../libs/hooks/useDebounce';
-import styles from './Search.module.scss';
+import s from './Search.module.scss';
 
 export type SearchParams = {
   searchValue?: string,
   options?: Option[]
 }
 const Search = () => {
-  const productsStore = useProductStore();
+  const { productStore } = useProductStore();
   const [searchParams, setSearchParams] = useSearchParams();
   const title = searchParams.get('search') || '';
   const categoryID = searchParams.get('categoryId') || '';
@@ -44,6 +44,7 @@ const Search = () => {
   }, [categoryID, categoryStore]);
 
   React.useEffect(() => {
+
     productsStore.getProductsList('/products', { offset: 0, limit: 10, title, categoryId: categoryID });
   }, [searchQuery, categoryID, title, productsStore]);
 
@@ -67,7 +68,7 @@ const Search = () => {
         <Input value={searchParams.get('search') || ''} placeholder="Search product" onChange={getSearchParams} />
         <Button loading={productsStore.meta === Meta.loading}>Find now</Button>
       </div>
-      <div className={styles.dropdown_wrapper}>
+      <div className={s.dropdown_wrapper}>
         <MultiDropdown
           options={categoryStore.categories}
           value={

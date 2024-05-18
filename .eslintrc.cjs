@@ -32,6 +32,7 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     'import/default': 'off',
     'prefer-const': 'off',
+    'no-explicit-any': 'off',
     'import/order': [
       'error',
       {
@@ -51,7 +52,7 @@ module.exports = {
   },
   settings: {
     'import/parsers': {
-      '@typescript-eslint/parser': ['.ts', '.tsx', '.scss', '.svg', '.png', '.jpg'],
+      '@typescript-eslint/parser': ['.ts', '.tsx', '.scss', '.svg', '.png', '.jpg', '.jpeg'],
     },
     'import/resolver': {
       typescript: {

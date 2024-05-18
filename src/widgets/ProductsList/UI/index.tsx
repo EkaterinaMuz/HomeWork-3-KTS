@@ -4,43 +4,46 @@ import * as React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useNavigate } from 'react-router-dom';
 import { Product } from '@/entities/products/types';
+import Button from '@/shared/UI/Button';
+import Card from '@/shared/UI/Card';
+import SkeletonCard from '@/shared/UI/Card/Skeleton';
+import Loader from '@/shared/UI/Loader';
 import { useProductStore } from '@entities/products/models/store/context';
 import ROUTES from '@shared/routes';
 import { Meta } from '@shared/types/Meta';
-import Button from '@shared/ui/Button';
-import Card from '@shared/ui/Card';
-import SkeletonCard from '@shared/ui/Card/Skeleton';
-import Loader from '@shared/ui/Loader';
 import { parseImageArray } from '../lib';
-import styles from './ProductsList.module.scss';
-
-
+import s from './ProductsList.module.scss';
 
 const ProductsList = () => {
-  const productsStore = useProductStore();
+  const { productStore, shoppingCartStore } = useProductStore();
 
   const navigate = useNavigate();
 
+  const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>, product: Product) => {
+    e.stopPropagation();
+    shoppingCartStore.addToCart(product)
+  }
+
   return (
     <>
-      <div className={styles.quantity_wrapper}>
-        <h2 className={styles.quatity_text}>Total Products</h2>
-        <span className={styles.quatity_number}>{productsStore.list && productsStore.list.length}</span>
+      <div className={s.quantity_wrapper}>
+        <h2 className={s.quatity_text}>Total Products</h2>
+        <span className={s.quatity_number}>{productStore.list && productStore.list.length}</span>
       </div>
       <InfiniteScroll
-        dataLength={productsStore.list.length}
-        next={productsStore.getMoreProducts}
-        hasMore={productsStore.hasMore}
+        dataLength={productStore.list.length}
+        next={productStore.getMoreProducts}
+        hasMore={productStore.hasMore}
         style={{ overflowY: 'hidden', textAlign: 'center' }}
         loader={<Loader />}
         endMessage='You"ve reached the end of product list'
       >
-        <div className={cn(styles.catalog_wrapper)}>
-          {productsStore.meta === Meta.loading &&
+        <div className={cn(s.catalog_wrapper)}>
+          {productStore.meta === Meta.loading &&
             Array(6)
               .fill(0)
               .map((_, index) => <SkeletonCard key={index} />)}
-          {productsStore.list.map((product: Product) => {
+          {productStore.list.map((product: Product) => {
             return (
               <>
                 <Card
@@ -51,7 +54,14 @@ const ProductsList = () => {
                   subtitle={product.description}
                   image={parseImageArray(product.images)}
                   onClick={() => navigate(ROUTES.PRODUCT(String(product.id)))}
-                  actionSlot={<Button color="accent">Add to Cart</Button>}
+                  actionSlot={
+                    <Button
+                      color="accent"
+                      onClick={(e) => onButtonClick(e, product)}
+                    >
+                      Add to Cart
+                    </Button>
+                  }
                 />
               </>
             );
