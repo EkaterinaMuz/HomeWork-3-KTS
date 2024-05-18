@@ -1,6 +1,6 @@
-
 import cn from 'classnames';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { SearchParams } from '@/features/Search/ui';
 import Input from '../Input';
 import ArrowDownIcon from '../icons/ArrowDownIcon';
 import s from './MultiDropdown.module.scss';
@@ -20,7 +20,7 @@ export type MultiDropdownProps = {
   /** Текущие выбранные значения поля, может быть пустым */
   value: Option[];
   /** Callback, вызываемый при выборе варианта */
-  onChange: (value: Option[]) => void;
+  onChange: (value: SearchParams) => void;
   /** Заблокирован ли дропдаун */
   disabled?: boolean;
   /** Возвращает строку которая будет выводится в инпуте. В случае если опции не выбраны, строка должна отображаться как placeholder. */
@@ -48,30 +48,32 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
 
   const activeKeys = value.map(({ key }) => key);
 
-  const isActive = (option: Option) => { return activeKeys.includes(option.key); }
+  const isActive = (option: Option) => {
+    return activeKeys.includes(option.key);
+  };
 
   useEffect(() => {
     setFilteredOptions(options);
   }, [options]);
 
-  const inputChange = (string: string) => {
-    setFilteredOptions(options.filter(option => option.value.toLowerCase().includes(string.toLowerCase())));
+  const inputChange = ({ searchValue }) => {
+    setFilteredOptions(options.filter((option) => option.value.toLowerCase().includes(searchValue.string.toLowerCase())));
   };
 
   const handleClick = (_: React.MouseEvent<HTMLOptionElement>, option: Option) => {
     if (props.disabled) return;
     let activeOptions: Option[];
     if (isActive(option)) {
-      activeOptions = value.filter(el => el.key !== option.key);
+      activeOptions = value.filter((el) => el.key !== option.key);
       setPlaceholder('Filter');
     } else {
       activeOptions = [option];
     }
     const res = getTitle(activeOptions);
     setInputValue(res);
-    onChange(activeOptions);
+    onChange({ options: activeOptions });
     setShow(false);
-  }
+  };
 
   const dropdownRef = useRef<null | HTMLDivElement>(null);
 
@@ -99,9 +101,9 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
         onChange={inputChange}
         afterSlot={<ArrowDownIcon color="secondary" />}
       />
-      {(show && !props.disabled) &&
+      {show && !props.disabled && (
         <select disabled={props.disabled} size={filteredOptions.length} multiple className={s.select}>
-          {filteredOptions.map(elem => {
+          {filteredOptions.map((elem) => {
             return (
               <option
                 className={cn(s.item, isActive(elem) && s.selected)}
@@ -111,13 +113,12 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
               >
                 {elem.value}
               </option>
-            )
-
+            );
           })}
-        </select >
-      }
+        </select>
+      )}
     </div>
-  )
+  );
 };
 
 export default MultiDropdown;

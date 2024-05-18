@@ -12,22 +12,26 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   color?: string;
   className?: string;
-
 };
 
 const Button: React.FC<ButtonProps> = ({ loading, disabled, children, className, color, ...props }) => {
   return (
     <>
-      <button data-testid="button" className={cn(className, s.btn, s[`color_${color}`], {
-        [s.disabled]: disabled,
-      })}
+      <button
+        data-testid="button"
+        className={cn(className, s.btn, s[`color_${color}`], {
+          [s.disabled]: disabled,
+        })}
         disabled={disabled ? true : loading}
-        {...props}>
-        {loading && <Loader size='s' data-testid="loader" />}
-        <Text tag='span' view='button'>{children}</Text>
-      </button >
+        {...props}
+      >
+        {loading && <Loader size="s" data-testid="loader" />}
+        <Text tag="span" view="button">
+          {children}
+        </Text>
+      </button>
     </>
-  )
+  );
 };
 
 export default Button;

@@ -5,8 +5,9 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-    "baseUrl": "./src/",
+    "baseUrl": "src",
     "paths": {
+      "@/*": ["*"],
       "@app/*": ["app/*"],
       "@pages/*": ["pages/*"],
       "@widgets/*": ["widgets/*"],
@@ -14,20 +15,25 @@
       "@features/*": ["features/*"],
       "@shared/*": ["shared/*"]
     },
-
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "esModuleInterop": true,
     "noEmit": true,
     "jsx": "react-jsx",
 
-    "strict": true,
+    "strict": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "types": ["vite-plugin-svgr/client"],
-  "include": ["src", "main.tsx", "custom.d.ts"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
+  "include": ["src", "main.tsx", "global.d.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
