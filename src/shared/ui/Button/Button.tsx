@@ -13,7 +13,7 @@ export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   color?: string;
   className?: string;
-  onClick?: (product: Product) => void
+  onClick?: (product: Product) => void;
 };
 
 const Button: React.FC<ButtonProps> = ({ loading, disabled, children, className, color, onClick, ...props }) => {

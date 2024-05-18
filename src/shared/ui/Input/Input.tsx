@@ -13,7 +13,6 @@ export type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onCh
 };
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(({ value, onChange, afterSlot, ...props }, ref) => {
-
   const [state, setState] = React.useState<string>(value);
 
   React.useEffect(() => {

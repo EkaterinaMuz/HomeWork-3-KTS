@@ -28,12 +28,7 @@ const RelatedItems: React.FC<{ products: Product[] }> = ({ products }) => {
               image={product.images[0]}
               captionSlot={product.category.name}
               contentSlot={product.price}
-              actionSlot={
-                <Button
-                  onClick={() => shoppingCartStore.addToCart(product)}
-                >
-                  Add to Cart
-                </Button>}
+              actionSlot={<Button onClick={() => shoppingCartStore.addToCart(product)}>Add to Cart</Button>}
               onClick={() => navigate(ROUTES.PRODUCT(String(product.id)))}
             />
           );

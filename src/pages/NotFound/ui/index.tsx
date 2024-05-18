@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Navigation from '@/widgets/Navigation/ui';
 import styles from './NotFound.module.scss';
 

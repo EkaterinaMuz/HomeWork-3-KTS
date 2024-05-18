@@ -12,9 +12,9 @@ import useDebounce from '../lib/hooks/useDebounce';
 import s from './Search.module.scss';
 
 export type SearchParams = {
-  searchValue?: string,
-  options?: Option[]
-}
+  searchValue?: string;
+  options?: Option[];
+};
 const Search = () => {
   const { productStore } = useProductStore();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -44,10 +44,8 @@ const Search = () => {
   }, [categoryID, categoryStore]);
 
   React.useEffect(() => {
-
     productStore.getProductsList('/products', { offset: 0, limit: 10, title, categoryId: categoryID });
   }, [searchQuery, categoryID, title, productStore]);
-
 
   const getSearchParams = (value: SearchParams) => {
     const search = value.searchValue || title || null;
@@ -59,8 +57,6 @@ const Search = () => {
     };
     setSearchParams(params);
   };
-
-
 
   return (
     <div className={s.searchbar_wrapper}>

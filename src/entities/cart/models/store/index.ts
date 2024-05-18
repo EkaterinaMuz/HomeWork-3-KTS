@@ -76,7 +76,6 @@ class CartStore implements ILocalStore {
   }
 
   isAdded(id) {
-    console.log(id);
     const cartItems = toJS(this._cartItems);
     return cartItems.order.includes(id);
   }

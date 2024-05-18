@@ -1,4 +1,4 @@
-import React, { createContext, ReactNode, useContext } from 'react';
+import React, { createContext, ReactNode, useContext, useMemo } from 'react';
 import useLocalStore from '@/shared/lib/hooks/useLocalStore';
 import CartStore from '@entities/cart/models/store';
 import ProductsStore from './ProductsStore';
@@ -25,10 +25,13 @@ export const ProductStoreProvider = ({ children }: Props) => {
   const productStore = useLocalStore(() => new ProductsStore());
   const shoppingCartStore = useLocalStore(() => new CartStore());
 
-  const value: StoreValue = {
-    productStore,
-    shoppingCartStore
-  }
+  const value = useMemo(
+    () => ({
+      productStore,
+      shoppingCartStore,
+    }),
+    [productStore, shoppingCartStore],
+  );
 
   return <context.Provider value={value}>{children}</context.Provider>;
 };

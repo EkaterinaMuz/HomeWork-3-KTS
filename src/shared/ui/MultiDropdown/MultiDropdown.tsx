@@ -57,7 +57,9 @@ const MultiDropdown: React.FC<MultiDropdownProps> = ({ options, value, onChange,
   }, [options]);
 
   const inputChange = ({ searchValue }) => {
-    setFilteredOptions(options.filter((option) => option.value.toLowerCase().includes(searchValue.string.toLowerCase())));
+    setFilteredOptions(
+      options.filter((option) => option.value.toLowerCase().includes(searchValue.string.toLowerCase())),
+    );
   };
 
   const handleClick = (_: React.MouseEvent<HTMLOptionElement>, option: Option) => {

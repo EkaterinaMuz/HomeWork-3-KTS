@@ -49,7 +49,7 @@ class CategoryStore implements ILocalStore {
     this._categories = getInitialCollectionModel();
 
     try {
-      const response = await ApiService.get<Category[]>(url);
+      const response = await ApiService.get<Category[], null>(url);
       runInAction(() => {
         this._categories = normalizeCollection((elem) => elem.id, response);
         this._meta = Meta.success;

@@ -23,7 +23,7 @@ const ProductsList = () => {
     e.stopPropagation();
     shoppingCartStore.addToCart(product);
     shoppingCartStore.isAdded(product.id);
-  }
+  };
 
   return (
     <>
@@ -46,29 +46,20 @@ const ProductsList = () => {
               .map((_, index) => <SkeletonCard key={index} />)}
           {productStore.list.map((product: Product) => {
             return (
-              <>
-                <Card
-                  key={product.id}
-                  captionSlot={product.category.name}
-                  contentSlot={product.price}
-                  title={product.title}
-                  subtitle={product.description}
-                  image={parseImageArray(product.images)}
-                  onClick={() => navigate(ROUTES.PRODUCT(String(product.id)))}
-                  actionSlot={
-                    <Button
-                      color="accent"
-                      onClick={(e) => onButtonClick(e, product)}
-                    >
-                      {shoppingCartStore.isAdded(product.id)
-                        ?
-                        'Added to Cart'
-                        :
-                        'Add to Cart'}
-                    </Button>
-                  }
-                />
-              </>
+              <Card
+                key={product.id}
+                captionSlot={product.category.name}
+                contentSlot={product.price}
+                title={product.title}
+                subtitle={product.description}
+                image={parseImageArray(product.images)}
+                onClick={() => navigate(ROUTES.PRODUCT(String(product.id)))}
+                actionSlot={
+                  <Button color="accent" onClick={(e) => onButtonClick(e, product)}>
+                    {shoppingCartStore.isAdded(product.id) ? 'Added to Cart' : 'Add to Cart'}
+                  </Button>
+                }
+              />
             );
           })}
         </div>

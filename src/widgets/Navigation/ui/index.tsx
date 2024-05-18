@@ -37,12 +37,11 @@ const Navigation = () => {
           <Link to={ROUTES.CART}>
             <Bag />
           </Link>
-          {
-            shoppingCartStore.cartItems.length > 0 &&
-            (<Text view='p-14' className={s.cart_number}>
+          {shoppingCartStore.cartItems.length > 0 && (
+            <Text view="p-14" className={s.cart_number}>
               {shoppingCartStore.cartItems.length}
-            </Text>)
-          }
+            </Text>
+          )}
         </div>
         <User />
       </div>
