@@ -1,5 +1,6 @@
 {
   "name": "e-commerce",
+  "homepage": "https://github.com/EkaterinaMuz/HomeWork-3-KTS",
   "private": true,
   "version": "0.0.0",
   "browserslist": [
@@ -11,7 +12,9 @@
     "build": "cross-env NODE_ENV=production webpack --mode=production",
     "lint": "eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint \"./src/**/*.{js,jsx,ts,tsx}\" --fix",
-    "prettier:fix": "prettier --write \"src/**/*\""
+    "prettier:fix": "prettier --write \"src/**/*\"",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@types/axios": "^0.14.0",
@@ -56,6 +59,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "fork-ts-checker-webpack-plugin": "^9.0.2",
+    "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.6.0",
     "mini-css-extract-plugin": "^2.9.0",
     "postcss-loader": "^8.1.1",
