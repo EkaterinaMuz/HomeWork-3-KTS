@@ -22,7 +22,6 @@ const ProductsList = () => {
   const onButtonClick = (e: React.MouseEvent<HTMLButtonElement>, product: Product) => {
     e.stopPropagation();
     shoppingCartStore.addToCart(product);
-    shoppingCartStore.isAdded(product.id);
   };
 
   return (

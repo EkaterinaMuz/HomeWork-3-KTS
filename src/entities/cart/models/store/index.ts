@@ -23,7 +23,6 @@ class CartStore implements ILocalStore {
       updateTotalAmount: action.bound,
       cartItems: computed,
       totalAmount: computed,
-      isAdded: action.bound,
     });
     this.updateTotalAmount();
   }
