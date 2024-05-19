@@ -21,7 +21,7 @@ const ProductDetailedInfo: React.FC<{ product: Product }> = ({ product }) => {
         <div className={s.buttons_wrapper}>
           <Button color="accent">Buy Now</Button>
           <Button onClick={() => shoppingCartStore.addToCart(product)} color="light">
-            {shoppingCartStore.isAdded(product.id) === true ? 'Added to Cart' : 'Add to Cart'}
+            Add to Cart
           </Button>
         </div>
       </div>
