@@ -55,7 +55,7 @@ const ProductsList = () => {
                 onClick={() => navigate(ROUTES.PRODUCT(String(product.id)))}
                 actionSlot={
                   <Button color="accent" onClick={(e) => onButtonClick(e, product)}>
-                  Add to Cart
+                    Add to Cart
                   </Button>
                 }
               />

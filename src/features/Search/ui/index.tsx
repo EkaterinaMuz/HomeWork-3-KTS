@@ -9,25 +9,20 @@ import Button from '@/shared/ui/Button';
 import Input from '@/shared/ui/Input';
 import MultiDropdown, { Option } from '@/shared/ui/MultiDropdown';
 import useDebounce from '../lib/hooks/useDebounce';
-import s from './Search.module.scss';
 
-export type SearchParams = {
-  searchValue?: string;
-  options?: Option[];
+type QueryParams = {
+  search?: string;
+  categoryId?: string;
 };
 const Search = () => {
   const { productStore } = useProductStore();
   const [searchParams, setSearchParams] = useSearchParams();
   const title = searchParams.get('search') || '';
   const categoryID = searchParams.get('categoryId') || '';
+
   const searchQuery = useDebounce(title, 1500);
 
   const categoryStore = useLocalStore(() => new CategoryStore());
-
-  type QueryParams = {
-    search?: string;
-    categoryId?: string;
-  };
 
   const getTitle = (options: Option[]) => {
     if (options.length) {
@@ -78,6 +73,12 @@ const Search = () => {
       </div>
     </div>
   );
+};
+
+import s from './Search.module.scss';
+export type SearchParams = {
+  searchValue?: string;
+  options?: Option[];
 };
 
 export default observer(Search);
