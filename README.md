@@ -25,7 +25,29 @@
 
 - Фильтрация товаров по категории
 - Поиск товаров по названию
+- Корзина (добавление/удаление товаров)
 - Реализация skeleton-компонентов
 - Бесконечный скролл
+- Слайдер на детальной странице товара
 
-Страница списка товаров:
+### Страница списка товаров:
+
+![reDME_LIST2.png](public%2FreDME_LIST2.png)
+
+![readme_list1.png](public%2Freadme_list1.png)
+
+
+### Детальная страница товара:
+
+![readme_detail.png](public%2Freadme_detail.png)
+
+
+### Список похожих товаров (по категории):
+
+![readme_related.png](public%2Freadme_related.png)
+
+
+### Страница с корзиной:
+
+![readme_cart.png](public%2Freadme_cart.png)
+
