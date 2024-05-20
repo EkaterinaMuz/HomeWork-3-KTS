@@ -1,12 +1,15 @@
 import { observer } from 'mobx-react-lite';
+import { useNavigate } from 'react-router-dom';
 import * as React from 'react';
 import CartItem from '@/shared/ui/CartItem/CartItem';
 import Text from '@/shared/ui/Text';
 import { useProductStore } from '@entities/products/models/store/context';
+import ROUTES from '@shared/routes';
 import s from './CartProductList.module.scss';
 
 const CartProductList = () => {
   const { shoppingCartStore } = useProductStore();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -22,7 +25,13 @@ const CartProductList = () => {
       </div>
       <section className={s.cart__list}>
         {shoppingCartStore.cartItems.map((cartItem) => {
-          return <CartItem product={cartItem} key={cartItem.id} />;
+          return (
+            <CartItem
+              onClick={() => navigate(ROUTES.PRODUCT(String(cartItem.id)))}
+              product={cartItem}
+              key={cartItem.id}
+            />
+          );
         })}
       </section>
       <div className={s.cart__bottom}>

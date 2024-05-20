@@ -39,7 +39,6 @@ export default {
     path: buildPath,
     filename: 'bundle.js',
     libraryExport: 'default',
-    publicPath: '/',
   },
   target: !isProd ? 'web' : 'browserslist',
   module: {

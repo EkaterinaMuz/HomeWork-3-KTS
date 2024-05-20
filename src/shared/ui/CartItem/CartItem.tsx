@@ -7,7 +7,11 @@ import Text from '../Text';
 import DeleteIcon from '../icons/DeleteIcon';
 import s from './CartItem.module.scss';
 
-const CartItem: React.FC<{ product: CartProduct }> = ({ product }) => {
+type CartItemProps = {
+  product: CartProduct;
+  onClick: () => void;
+};
+const CartItem: React.FC<CartItemProps> = ({ product, onClick }) => {
   const { shoppingCartStore } = useProductStore();
 
   const deleteItem = () => {
@@ -16,9 +20,11 @@ const CartItem: React.FC<{ product: CartProduct }> = ({ product }) => {
   return (
     <article className={s.card_wrapper}>
       <DeleteIcon className={s.delete_icon} onClick={deleteItem} />
-      <div className={s.card_right}>
+      <div className={s.card_right} onClick={onClick}>
         <img src={parseImageArray(product.images)} className={s.card_img} alt={product.title} />
-        <Text view="p-16">{product.title}</Text>
+        <Text className={s.title} view="p-16">
+          {product.title}
+        </Text>
       </div>
       <div className={s.card_left}>
         <Text view="p-20">${product.price}</Text>

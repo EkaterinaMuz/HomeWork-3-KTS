@@ -1,6 +1,7 @@
 @use "@shared/styles/globals.scss" as *;
 
 .header {
+  position: fixed;
   padding: 0 100px;
   display: flex;
   align-items: center;
@@ -9,6 +10,7 @@
   height: 90px;
   background-color: $light;
   border-bottom: 2px solid #f3f3f3;
+  z-index: 999999;
 }
 
 .header_icons {

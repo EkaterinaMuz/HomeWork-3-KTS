@@ -13,6 +13,7 @@
   align-items: center;
   max-width: 360px;
   gap: 30px;
+  cursor: pointer;
 }
 .card_left {
   display: flex;
@@ -21,10 +22,22 @@
   width: 35%;
   gap: 10px;
 }
+.title {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  width: 200px;
+  overflow: hidden;
+}
 .card_img {
   border-radius: 7px;
   width: 137px;
   height: 94px;
+  object-fit: cover;
+  transition: 0.5s all;
+}
+.card_img:hover {
+  scale: 1.1;
 }
 .delete_icon {
   cursor: pointer;
