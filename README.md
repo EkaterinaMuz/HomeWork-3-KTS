@@ -32,22 +32,22 @@
 
 ### Страница списка товаров:
 
-![reDME_LIST2.png](public%2FreDME_LIST2.png)
+![reDME_LIST2.png](public/reDME_LIST2.png)
 
-![readme_list1.png](public%2Freadme_list1.png)
+![readme_list1.png](public/readme_list1.png)
 
 
 ### Детальная страница товара:
 
-![readme_detail.png](public%2Freadme_detail.png)
+![readme_detail.png](public/readme_detail.png)
 
 
 ### Список похожих товаров (по категории):
 
-![readme_related.png](public%2Freadme_related.png)
+![readme_related.png](public/readme_related.png)
 
 
 ### Страница с корзиной:
 
-![readme_cart.png](public%2Freadme_cart.png)
+![readme_cart.png](public/readme_cart.png)
 
